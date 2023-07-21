@@ -1,4 +1,8 @@
-<h1>Welcome to Untuned</h1>
 
-<p>Don't have an account yet? </p>
-<%= link_to "Sign up now", signup_path %>
+<% if user_signed_in? %>
+    <h1>Welcome back to Untuned</h1>
+<% else %>
+    <h1>Welcome to Untuned</h1>
+    <p>Don't have an account yet? </p>
+
+<% end %>
