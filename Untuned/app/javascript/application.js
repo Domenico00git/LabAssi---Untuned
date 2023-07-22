@@ -2,5 +2,5 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-//=require jquery
-//=require boostrap-sprockets
+//= require jquery
+//= require boostrap-sprockets
