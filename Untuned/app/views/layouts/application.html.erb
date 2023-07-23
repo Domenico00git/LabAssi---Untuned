@@ -42,10 +42,16 @@
               </li>
 
             <% end %>
+
+            <li class="nav-item"><%= link_to "Forum",
+            posts_path, class:"nav-link"%>
+            </li>
+
           </ul>
         </div>
     </nav>
   
   <%= yield %>
+
   </body>
 </html>
