@@ -1,9 +1,14 @@
 <div id="<%= dom_id post %>">
   <p>
     <strong>User:</strong>
-    <%= post.user.username %>
+    <%= post.user.email%>
   </p>
 
+  <p>
+    <strong>Label:</strong>
+    <%= post.label %>
+  </p>
+  
   <p>
     <strong>Content:</strong>
     <%= post.content %>
@@ -20,8 +25,13 @@
   </p>
 
   <p>
-    <strong>Label:</strong>
-    <%= post.label %>
+    <strong>create at:</strong>
+    <%= post.created_at %>
+  </p>
+
+  <p>
+    <strong>last update:</strong>
+    <%= post.updated_at %>
   </p>
 
 </div>

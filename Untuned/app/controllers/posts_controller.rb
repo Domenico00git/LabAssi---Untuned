@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create]
 
   # GET /posts or /posts.json
   def index
