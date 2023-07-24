@@ -30,11 +30,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_23_063936) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "username", null: false
-    t.string "name", null: false
-    t.string "lastname", null: false
-    t.string "country", null: false
-    t.date "birthdate", null: false
+    t.string "username"
+    t.string "name"
+    t.string "lastname"
+    t.string "country"
+    t.date "birthdate"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
