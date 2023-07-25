@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :posts
-
   validates :username, presence: true, uniqueness: true, length: { minimum: 5}
+
+  acts_as_follower
+  acts_as_followable
+
 end
