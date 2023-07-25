@@ -1,16 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Posts</h1>
-
-<div id="posts">
-  <% @posts.each do |post| %>
+  <h2>Posts</h2>
+  <div id="posts">
+    <% @posts.each do |post| %>
     <%= render post %>
     <p>
       <%= link_to "Show this post", post %>
     </p>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<% if user_signed_in? %>
-  <%= link_to "New post", new_post_path %>
-<%end%>
+  <% if user_signed_in? %>
+    <%= link_to "New post", new_post_path %>
+  <%end%>
+</div>

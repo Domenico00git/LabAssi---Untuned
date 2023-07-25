@@ -1,19 +1,20 @@
 
-<body style="background-color:#1DB954;">
-    <% if user_signed_in? %>
-        <br>
-        <h1 class="d-flex justify-content-center">Welcome back to Untuned</h1>
-    <% else %>
-        <br>
-        <h1 class="d-flex justify-content-center">Welcome to Untuned</h1><br>
-        <p class="d-flex justify-content-center">Don't have an account yet?</p>
-        <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-outline-dark">
-            <%= link_to "Sign up", signup_path%>
-            </button>
-            <button type="button" class="btn btn-outline-dark">
-                <%= link_to "Continue as a guest", posts_path%>
-            </button>
-        </div>
-    <% end %>
+<body style="background-color:black;">
+    <div calss="container", style="color:white;"><br>
+        <% if user_signed_in? %>
+            <h2 class="d-flex justify-content-center", style="color:#1DB954;">
+                Welcome back to Untuned
+            </h2>
+        <% else %>
+            <h2 class="d-flex justify-content-center", style="color:#1DB954;">
+                Welcome to Untuned
+            </h2><br>
+            <p class="d-flex justify-content-center">Don't have an account yet?</p>
+
+            <div class="d-flex justify-content-center">
+                <%= link_to "Sign up", signup_path, class:"btn btn-outline-success"%>
+                <%= link_to "Continue as a guest", posts_path, class:"btn btn-outline-success"%>
+            </div>
+        <% end %>
+    </div>
 </body>
