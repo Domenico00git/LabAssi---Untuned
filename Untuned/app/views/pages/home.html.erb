@@ -3,7 +3,7 @@
     <div calss="container", style="color:white;"><br>
         <% if user_signed_in? %>
             <h2 class="d-flex justify-content-center", style="color:#1DB954;">
-                Welcome back to Untuned
+                Hi <%= current_user.name%>, welcome back to Untuned
             </h2>
         <% else %>
             <h2 class="d-flex justify-content-center", style="color:#1DB954;">
