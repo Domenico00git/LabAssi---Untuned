@@ -11,4 +11,8 @@ class Follow < ApplicationRecord
     self.update_attribute(:blocked, true)
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["blocked", "created_at", "followable_id", "followable_type", "follower_id", "follower_type", "id", "updated_at"]
+  end
+
 end

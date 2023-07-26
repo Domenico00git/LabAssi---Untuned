@@ -7,4 +7,12 @@ class Post < ApplicationRecord
 
   acts_as_followable
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["content", "created_at", "dislike", "id", "label", "like", "updated_at", "user_id"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["followings", "user"]
+  end
+
 end
