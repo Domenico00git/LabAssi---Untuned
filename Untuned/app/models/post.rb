@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :comments
 
   validates :user, presence: true
   validates :content, presence: true, length: { maximum: 200 }
@@ -9,7 +10,7 @@ class Post < ApplicationRecord
   acts_as_votable
 
   def self.ransackable_attributes(auth_object = nil)
-    ["content", "created_at", "id", "label", "updated_at", "user_id", "votes_for_id_eq"]
+    ["content", "created_at", "id", "label", "updated_at", "user_id", "votes_for_id_eq", "comments_id_eq"]
   end
 
   def self.ransackable_associations(auth_object = nil)
