@@ -1,0 +1,19 @@
+<body style="background-color:#1DB954;">
+    <div class="text-center">
+        <br>
+        <div class="d-flex justify-content-center">
+            <h1>Search result:</h1>
+        </div>
+        <br>
+        <% @users.each do |user| %>
+            <h2 class="d-flex justify-content-center">
+                <%= link_to user.username, user_path(user.username)%><br>
+            </h2>
+        <% end %>
+    </div>
+
+    <% if !@users[0].present?%>
+        <h2 class="d-flex justify-content-center"> No Users found </h2>
+
+    <% end %>
+</body>

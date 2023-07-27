@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'profiles/index'
+
   resources :comments
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
