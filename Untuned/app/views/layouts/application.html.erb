@@ -38,6 +38,13 @@
                 <%= link_to "My Profile", user_path(current_user.username), class:"nav-link"%>
               </li>
 
+              <% if current_user.admin?%>
+                <li class="nav-item">
+                  <%= link_to "Admin Area", admin_path, class:"nav-link"%>
+                </li> 
+              <% end %>
+
+
             <% end %>
           </ul>
         </div>

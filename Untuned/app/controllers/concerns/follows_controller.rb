@@ -1,5 +1,5 @@
 class FollowsController < ApplicationController
-    before_action :authenticate_user!, excpet: [:create, :destroy]
+    before_action :authenticate_user!
 
     def create
         user = User.find_by(username: params[:username])

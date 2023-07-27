@@ -10,15 +10,27 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :posts do
+    member do
+      get "like", to: "votes#createlike"
+      get "unlike", to: "votes#destroylike"
 
-  resources :posts
+      get "dislike", to: "votes#createdislike"
+      get "undislike", to: "votes#destroydislike"
+    end
+  end
+
+
   devise_for :users
   as:user do 
     get "signin", to: 'devise/sessions#new'
     get "signout", to: 'devise/sessions#destroy'
     get "signup", to: 'devise/registrations#new'
   end
+
   root 'pages#home'
   get 'contact', to: 'pages#contact'
   get "posts", to: 'posts#index'
+  get "admin", to: 'root#admin'
+
 end

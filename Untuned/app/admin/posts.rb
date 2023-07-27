@@ -5,12 +5,12 @@ ActiveAdmin.register Post do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :user_id, :content, :like, :dislike, :label
+   permit_params :user_id, :content, :label
   #
   # or
   #
    permit_params do
-     permitted = [:user_id, :content, :like, :dislike, :label]
+     permitted = [:user_id, :content, :label]
      permitted << :other if params[:action] == 'create' && current_user.admin?
      permitted
    end

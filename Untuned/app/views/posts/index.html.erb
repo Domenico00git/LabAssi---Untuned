@@ -1,10 +1,38 @@
 <div class="container">
   <p style="color: green"><%= notice %></p>
-
+  <h1 class="d-flex justify-content-center">Forum</h1>
   <h2>Posts</h2>
   <div id="posts">
     <% @posts.each do |post| %>
     <%= render post %>
+
+    <% if user_signed_in? %>
+      like:
+      <%= post.votes_for.up.size%>
+      <% if current_user.voted_up_on? post%>
+        <%= link_to "unlike", unlike_post_path(post), method: :delete%>
+      <% else %>
+        <%= link_to "like", like_post_path(post), method: :post%>
+      <% end %>
+    
+      dislike:
+      <%= post.votes_for.down.size%>
+      <% if current_user.voted_down_on? post%>
+        <%= link_to "undislike", undislike_post_path(post), method: :delete%>
+        <i class="bi bi-hand-thumbs-down"></i>
+      <% else %>
+        <%= link_to "dislike", dislike_post_path(post), method: :post%>
+        <i class="bi bi-hand-thumbs-down"></i>
+      <% end %>
+
+    <% else %>
+      like:
+      <%= post.votes_for.up.size%>
+      dislike:
+      <%= post.votes_for.down.size%>
+
+    <% end %>
+
     <p>
       <%= link_to "Show this post", post %>
     </p>
@@ -12,6 +40,6 @@
   </div>
 
   <% if user_signed_in? %>
-    <%= link_to "New post", new_post_path %>
+    <%= link_to "New post", new_post_path, class:"btn btn-dark" %>
   <%end%>
 </div>

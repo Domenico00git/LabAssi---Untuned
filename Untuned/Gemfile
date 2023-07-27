@@ -27,11 +27,6 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem 'bootstrap', '~> 5.3.0.alpha3'
-gem "acts_as_follower", github: "tcocca/acts_as_follower"
-
-
-
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -76,7 +71,13 @@ group :test do
   gem "webdrivers"
 end
 
+gem 'bootstrap', '~> 5.3.0.alpha3'
+
 gem "devise", "~> 4.9"
 
 gem "activeadmin" , "~> 3.0.0"
 gem "inherited_resources", github: "activeadmin/inherited_resources"
+
+gem "acts_as_follower", github: "tcocca/acts_as_follower"
+
+gem "acts_as_votable", "~> 0.10.0"
