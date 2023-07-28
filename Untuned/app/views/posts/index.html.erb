@@ -5,7 +5,7 @@
 
     <div>
       <div class="d-flex justify-content-center">
-        <%= form_with url: profiles_index_path, method: :get do |form|%>
+        <%= form_with url: topics_index_path, method: :get do |form|%>
           <%= form.search_field :query, value: params[:query],
           placeholder: "Search post by topic"%>
           <%= form.submit "Search", class:"btn btn-outline-light btn-sm" %>

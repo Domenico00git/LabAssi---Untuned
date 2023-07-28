@@ -1,0 +1,49 @@
+<body style="background-color:black;">
+    <div class="text-center">
+        <br>
+        <h2 style="color:#1DB954;">Search results:</h2>
+    </div>
+    
+    <div class="container", style="color:lightgrey;">
+        <% @topics.each do |post| %><hr>
+            <%= render post %>
+            <p>
+                <%= link_to "Show this post", post %>
+            </p>
+
+            <% if user_signed_in? %>
+                <% if current_user.voted_up_on? post%>
+                <%= link_to "unlike", unlike_post_path(post), method: :delete, class:"btn btn-sm btn-outline-light"%>
+                <% else %>
+                <%= link_to "like", like_post_path(post), method: :post, class:"btn btn-sm btn-outline-light"%>
+                <% end %>
+    
+                <% if current_user.voted_down_on? post%>
+                    <%= link_to "undislike", undislike_post_path(post), method: :delete, class:"btn btn-sm btn-outline-light"%>
+                <% else %>
+                    <%= link_to "dislike", dislike_post_path(post), method: :post, class:"btn btn-sm btn-outline-light"%>
+                <% end %>
+            <% end %>
+      
+            👍 :
+            <%= post.votes_for.up.size%> |
+            👎 :
+            <%= post.votes_for.down.size%>
+        <% end %> 
+
+        <div class="text-center">
+            <% if !@topics[0].present?%>
+                <h2> No Posts found </h2>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <%= link_to "Back to posts", posts_path, class:"btn btn-outline-light"%>
+    </div><br>
+
+</body>
+
+
+
+

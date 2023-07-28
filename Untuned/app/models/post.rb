@@ -3,8 +3,8 @@ class Post < ApplicationRecord
   has_many :comments
 
   validates :user, presence: true
-  validates :content, presence: true, length: { maximum: 200 }
-  validates :label, presence: true, length: { maximum: 20 }
+  validates :content, presence: true, length: { maximum: 500 }
+  validates :label, presence: true, length: { maximum: 50 }
 
   acts_as_followable
   acts_as_votable

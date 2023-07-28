@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'topics/index'
   get 'profiles/index'
 
   resources :comments
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
     get "signin", to: 'devise/sessions#new'
     get "signout", to: 'devise/sessions#destroy'
     get "signup", to: 'devise/registrations#new'
+    get "edit", to: 'devise/registration#edit'
   end
 
   root 'pages#home'
