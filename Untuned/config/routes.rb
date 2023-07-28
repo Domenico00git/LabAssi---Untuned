@@ -38,4 +38,7 @@ Rails.application.routes.draw do
   get "posts", to: 'posts#index'
   get "admin", to: 'root#admin'
 
+  get "followers", to: 'users#followers'
+  get "following", to: 'users#following'
+
 end

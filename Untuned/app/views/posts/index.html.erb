@@ -8,7 +8,7 @@
         <%= form_with url: topics_index_path, method: :get do |form|%>
           <%= form.search_field :query, value: params[:query],
           placeholder: "Search post by topic"%>
-          <%= form.submit "Search", class:"btn btn-outline-light btn-sm" %>
+          <%= form.submit "Search", class:"btn btn-outline-success btn-sm" %>
         <% end %>
       </div>
     </div>
