@@ -1,45 +1,52 @@
-<div class="container">
-  <p style="color: green"><%= notice %></p>
-  <h1 class="d-flex justify-content-center">Forum</h1>
-  <h2>Posts</h2>
-  <div id="posts">
-    <% @posts.each do |post| %>
-    <%= render post %>
+<body style="background-color:black">
+  <div class="container", style="color:lightgrey;">
+    <p style="color: green"><%= notice %></p>
+    <h1 class="d-flex justify-content-center", style="color:#1DB954;">Forum</h1>
+
+    <div>
+      <div class="d-flex justify-content-center">
+        <%= form_with url: profiles_index_path, method: :get do |form|%>
+          <%= form.search_field :query, value: params[:query],
+          placeholder: "Search post by topic"%>
+          <%= form.submit "Search", class:"btn btn-outline-light btn-sm" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="posts">
+      <% @posts.each do |post| %><hr>
+        <%= render post %>
+        <p>
+          <%= link_to "Show this post", post %>
+        </p>
+
+        <% if user_signed_in? %>
+          <% if current_user.voted_up_on? post%>
+            <%= link_to "unlike", unlike_post_path(post), method: :delete, class:"btn btn-sm btn-outline-light"%>
+          <% else %>
+            <%= link_to "like", like_post_path(post), method: :post, class:"btn btn-sm btn-outline-light"%>
+          <% end %>
+    
+          <% if current_user.voted_down_on? post%>
+            <%= link_to "undislike", undislike_post_path(post), method: :delete, class:"btn btn-sm btn-outline-light"%>
+          <% else %>
+            <%= link_to "dislike", dislike_post_path(post), method: :post, class:"btn btn-sm btn-outline-light"%>
+          <% end %>
+        <% end %>
+      
+        👍 :
+        <%= post.votes_for.up.size%> |
+        👎 :
+        <%= post.votes_for.down.size%>
+
+      <% end %>
+    </div>
 
     <% if user_signed_in? %>
-      like:
-      <%= post.votes_for.up.size%>
-      <% if current_user.voted_up_on? post%>
-        <%= link_to "unlike", unlike_post_path(post), method: :delete%>
-      <% else %>
-        <%= link_to "like", like_post_path(post), method: :post%>
-      <% end %>
-    
-      dislike:
-      <%= post.votes_for.down.size%>
-      <% if current_user.voted_down_on? post%>
-        <%= link_to "undislike", undislike_post_path(post), method: :delete%>
-      <% else %>
-        <%= link_to "dislike", dislike_post_path(post), method: :post%>
-      <% end %>
-
-    <% else %>
-      like:
-      <%= post.votes_for.up.size%>
-      dislike:
-      <%= post.votes_for.down.size%>
-
-    <% end %>
-
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-    <% end %>
+      <div class="d-flex justify-content-center">
+        <%= link_to "New post", new_post_path, class:"btn btn-success btn-lg" %>
+      </div>
+      <br><br>
+    <%end%>
   </div>
-
-  <% if user_signed_in? %>
-    <div class="d-flex justify-content-center">
-      <%= link_to "New post", new_post_path, class:"btn btn-dark btn-lg" %>
-    </div>
-  <%end%>
-</div>
+</body>

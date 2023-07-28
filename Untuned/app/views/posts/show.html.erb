@@ -1,21 +1,25 @@
-<p style="color: green"><%= notice %></p>
-<div class="container">
-
-  <%= render @post %>
-
-  <% if @post.user == current_user %>
-    <div>
-      <%= link_to "Edit this post", edit_post_path(@post) %> |
-      <%= link_to "Back to posts", posts_path %>
-      <%= button_to "Destroy this post", @post, method: :delete %>
-    </div>
+<body style="background-color:black">
   
-  <%else%>
-    <div>
-      <%= link_to "Back to posts", posts_path %>
-    </div>
+  <p style="color: green"><%= notice %></p>
+  <div class="container", style="color:lightgrey;">
 
-  <%end%>
-</div>
+    <%= render @post %>
+
+    <% if @post.user == current_user %>
+      <div>
+        <%= link_to "Edit this post", edit_post_path(@post) %> |
+        <%= link_to "Back to posts", posts_path %>
+        <br><br>
+        <%= link_to "Destroy this post", @post, method: :delete, class:"btn btn-sm btn-outline-danger" %>
+      </div>
+  
+    <%else%>
+      <div>
+        <%= link_to "Back to posts", posts_path %>
+      </div>
+
+    <%end%>
+  </div>
+</body>
 
 

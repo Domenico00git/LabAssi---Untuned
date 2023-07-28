@@ -1,5 +1,4 @@
 <div id="<%= dom_id post %>">
-  <hr>
   <p>
     <strong><%= link_to post.user.username, user_path(post.user.username)%></strong> -
     <strong><%= post.label %></strong>
@@ -11,7 +10,7 @@
 
   <p>
     <strong>create at:</strong>
-    <%= post.created_at %>
+    <%= post.created_at %> |
 
     <strong>last update:</strong>
     <%= post.updated_at %>
