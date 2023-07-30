@@ -1,7 +1,21 @@
 <body style="background-color:black;">
-    <div class="text-center">
-        <br>
-        <h2 style="color:#1DB954;">Search results :</h2>
+    <div class="container", style="color:lightgrey;">
+        <div class="row">
+            <div class="col md-2 d-flex justify-content-right">
+                <div>
+                    <br>
+                    <%= link_to "< Back to posts", posts_path, class:"btn btn-outline-light"%>
+                </div>
+            </div>
+            <div class="col-md-8 d-flex justify-content-center">
+                <div>
+                    <br>
+                    <h2 style="color:#1DB954;">Search results:</h2>
+                </div>
+            </div>
+            <div class="col md-2">
+            </div>
+        </div>
     </div>
     
     <div class="container", style="color:lightgrey;">
@@ -37,11 +51,6 @@
             <% end %>
         </div>
     </div>
-
-    <div class="text-center">
-        <%= link_to "Back to posts", posts_path, class:"btn btn-outline-light"%>
-    </div><br>
-
 </body>
 
 

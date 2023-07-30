@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col md-4 d-flex justify-content-left">
         <% if user_signed_in? %>
-          <%= link_to "See only following's posts", newest_following_posts_path, class:"btn btn-sm btn-outline-light"%>
+          <%= link_to "See only following's posts", oldest_following_posts_path, class:"btn btn-sm btn-outline-light"%>
         <% end %>
       </div>
       <div class="col md-4 d-flex justify-content-center">
@@ -19,12 +19,12 @@
         <% end %>
       </div>
       <div class="col md-4 d-flex justify-content-center">
-        <%= link_to "See oldest posts first", oldest_posts_path, class:"btn btn-sm btn-outline-light"%>
+        <%= link_to "See newest posts first", posts_path, class:"btn btn-sm btn-outline-light"%>
       </div>
     </div>
 
     <div id="posts">
-      <% @posts.reverse.each do |post| %><hr>
+      <% Post.all.each do |post| %><hr>
         <%= render post %>
         <p>
           <%= link_to "Show this post", post %>
