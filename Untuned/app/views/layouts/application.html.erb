@@ -67,6 +67,12 @@
                 <%= link_to "Log out", signout_path, method: :delete, class:"nav-link"%>
               </li>
 
+              <% if current_user.image.attached? %>
+                <%= image_tag(current_user.image, style: "display: inline-block; height: 40px; width: 40px; object-fit:cover; border-radius: 50%;")%>
+              <% else %>
+                <img src="/assets/default_picture.jpg" display="inline-block" height="40px" width="40px" object-fit="cover" border-radius="50%">
+              <% end %>
+
             <% else %>
               <li class="nav-item">
                 <%= link_to "Sign up", signup_path, class:"nav-link"%>

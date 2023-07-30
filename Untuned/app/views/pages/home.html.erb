@@ -2,38 +2,37 @@
     <img src="/assets/home.jpg" style="position: fixed; top: 10; left: 0; width: 100%; height: 100%; z-index: -1;">
     <div class="container"><br>
         <% if user_signed_in? %>
-            <h2 style="color:#1DB954;">
-                Hi <%= current_user.name%>,<br> welcome back to Untuned
-            </h2>
-            <br>
-            <h5 class="font-italic">
+            <h1 style="color:#1DB954;">
+                Hi <%= current_user.name%>,<br> welcome to Untuned
+            </h1>
+            <br><br>
+            <p class="font-italic">
                 Time passes,<br>
                 tastes and ways to listen to music change<br><br>
-                Untuned will always be the right place<br>
-                to express who you are<br>
+                Untuned will always be<br>
+                the right place to express who you are<br>
                 and share your ideas with other people
-            </h5>
+            </p>
             <br><br>
             <%= link_to "Go To Forum", posts_path, class:"btn w-25 btn-outline-success"%>
 
         <% else %>
-            <h2 style="color:#1DB954;">
+            <h1 style="color:#1DB954;">
                 Welcome to Untuned 
-            </h2><br>
-            <h5 class="font-italic">
+            </h1><br>
+            <p class="font-italic">
                 Time passes,<br>
                 tastes and ways to listen to music change<br><br>
-                Untuned will always be the right place<br>
-                to express who you are<br>
+                Untuned will always be<br>
+                the right place to express who you are<br>
                 and share your ideas with other people
-            </h5>
+            </p>
             <br><br>
             <%= link_to "Sign in", signin_path, class:"btn btn-outline-success w-25"%>
             <br><br>
             <p>Don't have an account yet?</p>
             <%= link_to "Sign up here", signup_path, class:"btn btn-outline-success"%>
             <%= link_to "Continue as guest", posts_path, class:"btn btn-outline-success"%>
-            
         <% end %>
     </div>
 </body>

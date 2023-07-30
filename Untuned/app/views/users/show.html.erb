@@ -1,40 +1,52 @@
 <body style="background-color:#1DB954;">
     <div class="container"><br>
-        <% if user_signed_in?%>
-            <%if @user.username == current_user.username%>
-                <h3 class="d-flex justify-content-center">My Profile</h3>
-            <%end%>
-
-            <div>
-                <h1>
-                    <%= @user.username%>       
-
-                    <%if @user.username != current_user.username%>
-                        <% if current_user.following?(@user) %>
-                            <%= link_to "Unfollow", unfollow_user_path(@user.username),
-                            method: :delete, class:"btn btn-primary" %>
-                        <% else %>
-                            <%= link_to "Follow", follow_user_path(@user.username),
-                            method: :post, class:"btn btn-outline-dark" %>
-                        <% end %>
-                
-                    <% else %>
-                        <div class="text-right">
-                            <button class="btn btn-sm btn-outline-dark">
-                                <%= link_to "FOLLOWERS :", followers_path, class:"btn btn-sm"%>
-                                <%= @user.count_user_followers %> 
-                            </button>
-                            <button class="btn btn-sm btn-outline-dark">
-                                <%= link_to "FOLLOWING :", following_path, class:"btn btn-sm"%>
-                                <%= @user.following_users_count %>
-                            </button>
-                    <% end %>
-                </h1>
+        <div class="row">
+            <div class="col-md-2 d-flex justify-content-center">
+                <% if user_signed_in?%>
+                    <%if @user.username == current_user.username%>
+                        <h3 class="d-flex justify-content-center">My Profile</h3>
+                    <%end%>
+                <% end %>
             </div>
-
-        <% else %>
-            <h1><%= @user.username%></h1>
-        
-        <% end %>
+        </div><br>
+        <div class="row">
+            <div class="col-md-2 d-flex justify-content-center">
+                <% if @user.image.attached? %>
+                    <%= image_tag(@user.image, style: "display: inline-block; height: 200px; width: 200px; object-fit:cover; border-radius: 50%;")%>
+                <% else %>
+                    <img src="/assets/default_picture.jpg" display="inline-block" height="200px" width="200px" object-fit="cover" border-radius="50%">
+                <% end %>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+                    <h2>
+                        <br>
+                        <%= @user.username%>
+                        <br>
+                        <%if @user.username != current_user.username%>
+                            <% if current_user.following?(@user) %>
+                                <%= link_to "Unfollow", unfollow_user_path(@user.username),
+                                method: :delete, class:"btn btn-primary" %>
+                            <% else %>
+                                <%= link_to "Follow", follow_user_path(@user.username),
+                                method: :post, class:"btn btn-outline-dark" %>
+                            <% end %>
+                
+                        <% else %>
+                            <div class="text-right">
+                                <button class="btn btn-sm btn-outline-dark">
+                                    <%= link_to "FOLLOWERS :", followers_path, class:"btn btn-sm"%>
+                                    <%= @user.count_user_followers %> 
+                                </button>
+                                <button class="btn btn-sm btn-outline-dark">
+                                    <%= link_to "FOLLOWING :", following_path, class:"btn btn-sm"%>
+                                    <%= @user.following_users_count %>
+                                </button>
+                            </div>
+                        <% end %>
+                    </h2>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+       

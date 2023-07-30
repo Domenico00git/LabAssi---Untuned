@@ -41,7 +41,12 @@
 
       <div class="field">
         <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control"%><br>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control"%>
+      </div>
+
+      <div class="field">
+        <%= f.label :profile_picture %><br />
+        <%= f.file_field :image %>
       </div>
 
       <div class="actions">
@@ -51,7 +56,5 @@
       </div>
     <% end %>
   </div>
-  
-  <%= render "devise/shared/links" %>
 </body>
 

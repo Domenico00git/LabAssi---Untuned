@@ -9,7 +9,12 @@
     <div class="container", style="color:lightgrey;">
         <% current_user.following_users.each do |user| %>
             <h2 class="d-flex justify-content-center">
-                <%= link_to user.username, user_path(user.username), class:"btn w-50 btn-outline-light"%>
+                <% if user.image.attached? %>
+                    <%= image_tag(user.image, style: "display: inline-block; height: 50px; width: 50px; object-fit:cover; border-radius: 50%;")%>
+                <% else %>
+                    <img src="/assets/default_picture.jpg" display="inline-block" height="50px" width="50px" object-fit="cover" border-radius="50%">
+                <% end %>⠀
+                <%= link_to user.username, user_path(user.username), class:"btn w-50 btn-outline-light btn-lg"%>
             </h2>
         <% end %>
     </div>
