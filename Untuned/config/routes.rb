@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'topics/index'
   get 'profiles/index'
 
-  resources :comments
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'users/:username', to: 'users#show', as: 'user'

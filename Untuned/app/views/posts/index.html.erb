@@ -54,7 +54,9 @@
 
     <% if user_signed_in? %>
       <div class="d-flex justify-content-center">
-        <%= link_to "New post", new_post_path, class:"btn btn-success btn-lg" %>
+        <div><br>
+          <%= link_to "New post", new_post_path, class:"btn btn-success btn-lg" %>
+        </div>
       </div>
       <br><br>
     <%end%>
