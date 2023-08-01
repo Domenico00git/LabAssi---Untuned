@@ -4,7 +4,6 @@ class AddFieldsToUsers < ActiveRecord::Migration[7.0]
     add_index :users, :username, unique: true
     add_column :users, :name, :string
     add_column :users, :lastname, :string
-    add_column :users, :country, :string
     add_column :users, :birthdate, :date
   end
 end
