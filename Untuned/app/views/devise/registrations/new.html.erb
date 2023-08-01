@@ -48,11 +48,14 @@
         <%= f.label :profile_picture %><br />
         <%= f.file_field :image%>
       </div>
-
+      <br>
       <div class="actions">
         <div class="d-flex justify-content-center">
           <%= f.submit "Sign up", class:"btn btn-outline-dark"%>
         </div>
+      </div>
+      <div>
+        <%= render "devise/shared/links" %>
       </div>
     <% end %>
   </div>

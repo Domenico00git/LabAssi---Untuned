@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center">
+
   <%- if controller_name != 'sessions' %>
     <%= link_to "Log in", signin_path %><br />
   <% end %>
@@ -24,4 +24,3 @@
       <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false } %><br />
     <% end %>
   <% end %>
-</div>
