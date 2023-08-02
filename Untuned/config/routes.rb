@@ -21,7 +21,12 @@ Rails.application.routes.draw do
       get 'dislike', to: 'votes#createdislike'
       get 'undislike', to: 'votes#destroydislike'
     end
+
+    resources :comments 
+
   end
+
+    
 
 
   devise_for :users
@@ -42,5 +47,7 @@ Rails.application.routes.draw do
 
   get 'followers', to: 'users#followers'
   get 'following', to: 'users#following'
+
+
 
 end

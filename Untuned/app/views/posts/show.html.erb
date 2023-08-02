@@ -2,45 +2,48 @@
   
   <p style="color: green"><%= notice %></p>
   <div class="container", style="color:lightgrey;">
+    <div class="row">
+      <div class="col md-2 d-flex justify-content-right">
+        <div>
+          <br>
+          <%= link_to "< Back to posts", posts_path, class:"btn btn-outline-light"%>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <%= render @post %>
+    </div>
+    <div class="row">
+      <div class="col-md-2 d-flex justify-content-center">
+        👍 :<%= @post.votes_for.up.size%> |
+        👎 :<%= @post.votes_for.down.size%>
+      </div>
+      <div class="col-md-2">
+        Comments: <%=@post.comments.count%>
+      </div>
+      <div class="col-md-4"></div>
 
- 
-
-    <%= render @post %>
+      <% if @post.user == current_user %>
+        <div class="col-md-2 d-flex justify-content-end">
+          <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-sm btn-outline-light" %>
+        </div>
+        <div class="col-md-2 d-flex justify-content-start">
+          <%= button_to "Delete post", @post, method: :delete, class:"btn btn-sm btn-outline-danger" %>
+        </div>
+      <% end %>
+    </div>
+    <hr>
+    
+    <h3 class="d-flex justify-content-center", style="color:#1DB954;">Comment Section:</h3>
+    <%= render @post.comments.order(id: :desc)%>
+    <br>
 
     <% if user_signed_in? %>
-      <% if current_user.voted_up_on? @post%>
-        <%= link_to "unlike", unlike_post_path(@post), method: :delete, class:"btn btn-sm btn-outline-light"%>
-      <% else %>
-        <%= link_to "like", like_post_path(@post), method: :post, class:"btn btn-sm btn-outline-light"%>
-      <% end %>
-    
-      <% if current_user.voted_down_on? @post%>
-        <%= link_to "undislike", undislike_post_path(@post), method: :delete, class:"btn btn-sm btn-outline-light"%>
-      <% else %>
-        <%= link_to "dislike", dislike_post_path(@post), method: :post, class:"btn btn-sm btn-outline-light"%>
-      <% end %>
-    <% end %>
-      
-    👍 :<%= @post.votes_for.up.size%> |
-    👎 :<%= @post.votes_for.down.size%>
-
-    <% if @post.user == current_user %>
-      <div>
-        <br>
-        <%= link_to "Edit this post", edit_post_path(@post) %> |
-        <%= link_to "Back to posts", posts_path %>
-        <br><br>
-        <%= button_to "Destroy this post", @post, method: :delete, class:"btn btn-sm btn-outline-danger" %>
-      </div>
-  
-    <%else%>
-      <div>
-        <br>
-        <%= link_to "Back to posts", posts_path %>
-      </div>
-
-    <%end%>
-
+      <h4>Leave a new comment</h4>
+      <%= render partial:'comments/form'%>
+    <%end %>
+    <br>
   </div>
 </body>
 

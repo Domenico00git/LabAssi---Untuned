@@ -14,11 +14,10 @@
   </p>
 
   <p>
-    <strong>create at:</strong>
-    <%= post.created_at %> |
+    <strong>create:</strong>
+    <%= time_ago_in_words(post.created_at) %> |
 
     <strong>last update:</strong>
-    <%= post.updated_at %>
+    <%= time_ago_in_words(post.updated_at) %>
   </p>
-
 </div>

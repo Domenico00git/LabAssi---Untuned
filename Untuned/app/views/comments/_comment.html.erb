@@ -1,0 +1,21 @@
+
+<p>
+    <% if comment.user.image.attached? %>
+      <%= image_tag(comment.user.image, style: "display: inline-block; height: 30px; width: 30px; object-fit:cover; border-radius: 50%;")%>
+    <% else %>
+      <img src="/assets/default_picture.jpg" display="inline-block" height="30px" width="30px" object-fit="cover" border-radius="50%">
+    <% end %>
+    <strong><%= link_to comment.user.username, user_path(comment.user.username)%></strong> 
+</p>
+
+<p>
+    <%= comment.body %>
+</p>
+
+<p>
+    <strong>create:</strong>
+    <%= time_ago_in_words(comment.created_at) %> |
+    <strong>last update:</strong>
+    <%= time_ago_in_words(comment.updated_at) %>
+</p>
+<hr>

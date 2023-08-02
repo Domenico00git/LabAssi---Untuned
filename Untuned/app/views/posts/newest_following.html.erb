@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="col md-4 d-flex justify-content-left">
-          <%= link_to "See all the posts", posts_path, class:"btn btn-sm btn-outline-light"%>
+          <%= link_to "See all the posts", posts_path, class:"btn btn-sm btn-outline-success"%>
       </div>
       <div class="col md-4 d-flex justify-content-center">
         <%= form_with url: topics_index_path, method: :get do |form|%>
@@ -17,42 +17,56 @@
         <% end %>
       </div>
       <div class="col md-4 d-flex justify-content-center">
-        <%= link_to "See oldest posts first", oldest_following_posts_path, class:"btn btn-sm btn-outline-light"%>
+        <%= link_to "See oldest posts first", oldest_following_posts_path, class:"btn btn-sm btn-outline-success"%>
       </div>
     </div>
 
     <div id="posts">
-        <% Post.all.each do |post| %>
-            <% if post.user != current_user && post.user.followed_by?(current_user)%><hr>
-                <%= render post %>
-                <p>
-                <%= link_to "Show this post", post %>
-                </p>
+      <% Post.all.reverse.each do |post| %>
+        <% if post.user != current_user && post.user.followed_by?(current_user)%>
+          <hr>
+          <%= render post %>
 
+          <div class="row">
+                
+            <div class="col-md-2">
+              <%= link_to "Show this post", post %>
+            </div>
+
+            <div class="col-md-2 d-flex justify-content-center">
+              Comments: <%=post.comments.count%>
+            </div>
+
+            <div class="col-md-2 d-flex justify-content-left">
+              👍 :<%= post.votes_for.up.size%> |
+              👎 :<%= post.votes_for.down.size%>
+            </div>
+
+            <div class="col-md-5 d-flex justify-content-end">
+              <% if user_signed_in? %>
                 <% if current_user.voted_up_on? post%>
-                    <%= link_to "unlike", unlike_post_path(post), method: :delete, class:"btn btn-sm btn-outline-light"%>
+                  <%= link_to "unlike", unlike_post_path(post), method: :delete, class:"btn btn-outline-light"%>
                 <% else %>
-                    <%= link_to "like", like_post_path(post), method: :post, class:"btn btn-sm btn-outline-light"%>
+                  <%= link_to "like", like_post_path(post), method: :post, class:"btn btn-outline-light"%>
                 <% end %>
     
                 <% if current_user.voted_down_on? post%>
-                    <%= link_to "undislike", undislike_post_path(post), method: :delete, class:"btn btn-sm btn-outline-light"%>
+                  <%= link_to "undislike", undislike_post_path(post), method: :delete, class:"btn btn-outline-light"%>
                 <% else %>
-                    <%= link_to "dislike", dislike_post_path(post), method: :post, class:"btn btn-sm btn-outline-light"%>
+                  <%= link_to "dislike", dislike_post_path(post), method: :post, class:"btn btn-outline-light"%>
                 <% end %>
-      
-                👍 :
-                <%= post.votes_for.up.size%> |
-                👎 :
-                <%= post.votes_for.down.size%>
-            <% end %>
+              <% end %>
+            </div>
+          </div> 
         <% end %>
+      <% end %>
     </div>
 
     <div class="d-flex justify-content-center">
-        <div>
-            <br><br>
-            <%= link_to "New post", new_post_path, class:"btn btn-success btn-lg" %>
-        </div>
+      <div><br>
+        <%= link_to "New post", new_post_path, class:"btn btn-success btn-lg" %>
+        <br><br><br>
+      </div>
     </div>
+  </div>
 </body>
