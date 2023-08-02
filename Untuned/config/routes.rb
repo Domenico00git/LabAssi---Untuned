@@ -22,8 +22,15 @@ Rails.application.routes.draw do
       get 'undislike', to: 'votes#destroydislike'
     end
 
-    resources :comments 
-
+    resources :comments do
+      member do
+        get 'like', to: 'votes_comment#createlike'
+        get 'unlike', to: 'votes_comment#destroylike'
+  
+        get 'dislike', to: 'votes_comment#createdislike'
+        get 'undislike', to: 'votes_comment#destroydislike'
+      end
+    end
   end
 
     
@@ -34,12 +41,11 @@ Rails.application.routes.draw do
     get 'signin', to: 'devise/sessions#new'
     get 'signout', to: 'devise/sessions#destroy'
     get 'signup', to: 'devise/registrations#new'
-    get 'edit', to: 'devise/registration#edit'
   end
 
   root 'pages#home'
   get 'contact', to: 'pages#contact'
-  get "posts", to: 'posts#index'
+  get 'posts', to: 'posts#index'
   get 'oldest_posts', to: 'posts#oldest'
   get 'newest_following_posts', to: 'posts#newest_following'
   get 'oldest_following_posts', to: 'posts#oldest_following'

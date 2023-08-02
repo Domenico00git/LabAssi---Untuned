@@ -18,4 +18,24 @@
     <strong>last update:</strong>
     <%= time_ago_in_words(comment.updated_at) %>
 </p>
+<div class="col-md-2 d-flex justify-content-left">
+            👍 :<%= comment.votes_for.up.size%> |
+            👎 :<%= comment.votes_for.down.size%>
+          </div>
+
+          <div class="col-md-5 d-flex justify-content-end">
+            <% if user_signed_in? %>
+              <% if current_user.voted_up_on? comment%>
+                <%= link_to "unlike", unlike_post_comment_path(comment), method: :delete, class:"btn btn-outline-light"%>
+              <% else %>
+                <%= link_to "like", like_post_comment_path(comment), method: :post, class:"btn btn-outline-light"%>
+              <% end %>
+    
+              <% if current_user.voted_down_on? comment%>
+                <%= link_to "undislike", undislike_post_comment_path(comment), method: :delete, class:"btn btn-outline-light"%>
+              <% else %>
+                <%= link_to "dislike", dislike_post_comment_path(comment), method: :post, class:"btn btn-outline-light"%>
+              <% end %>
+            <% end %>
+          </div>
 <hr>

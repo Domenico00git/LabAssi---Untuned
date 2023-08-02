@@ -36,7 +36,7 @@
     <hr>
     
     <h3 class="d-flex justify-content-center", style="color:#1DB954;">Comment Section:</h3>
-    <%= render @post.comments.order(id: :desc)%>
+    <%= render @post.comments%>
     <br>
 
     <% if user_signed_in? %>
