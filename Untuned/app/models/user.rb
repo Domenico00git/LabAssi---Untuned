@@ -15,11 +15,12 @@ class User < ApplicationRecord
   
   acts_as_voter
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["birthdate", "created_at", "email", "encrypted_password", "id", "lastname", "name", "remember_created_at", "reset_password_sent_at",
-    "reset_password_token", "updated_at", "username", "admin", "votes_id_eq", "comments_id_eq", "image_attachment_id_eq", "image"]
   
+  def self.ransackable_attributes(auth_object = nil)
+    ["admin", "birthdate", "created_at", "email", "encrypted_password", "id", "lastname", "name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at", "username",
+    "image_attachment_id_eq", "image_attachment_blob_id_eq", "comments_id_eq", "votes_id_eq"]
   end
+
 
   def self.ransackable_associations(auth_object = nil)
     ["followings", "follows", "posts"]
