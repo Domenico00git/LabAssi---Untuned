@@ -5,6 +5,7 @@
     <div class="row">
       <h1 class="d-flex justify-content-center", style="color:#1DB954;">Untuned</h1>
     </div>
+    <br>
     <div class="row">
       <div class="col md-4 d-flex justify-content-left">
           <%= link_to "See all the posts", posts_path, class:"btn btn-sm btn-outline-success"%>
@@ -12,7 +13,7 @@
       <div class="col md-4 d-flex justify-content-center">
         <%= form_with url: topics_index_path, method: :get do |form|%>
           <%= form.search_field :query, value: params[:query],
-          placeholder: "Search post by topic"%>
+          placeholder: " Search by artist/album/song"%>
           <%= form.submit "Search", class:"btn btn-outline-success btn-sm" %>
         <% end %>
       </div>
@@ -43,18 +44,18 @@
               👎 :<%= post.votes_for.down.size%>
             </div>
 
-            <div class="col-md-4 d-flex justify-content-end">
+            <div class="col-md-3 d-flex justify-content-end">
               <% if user_signed_in? %>
                 <% if current_user.voted_up_on? post%>
-                  <%= link_to "unlike", unlike_post_path(post), method: :delete, class:"btn btn-sm btn-outline-light"%>
+                  <%= link_to "unlike", unlike_post_path(post), method: :delete, class:"btn btn-outline-primary"%>
                 <% else %>
-                  <%= link_to "like", like_post_path(post), method: :post, class:"btn btn-sm btn-outline-light"%>
+                  <%= link_to "like", like_post_path(post), method: :post, class:"btn btn-outline-primary"%>
                 <% end %>
     
                 <% if current_user.voted_down_on? post%>
-                  <%= link_to "undislike", undislike_post_path(post), method: :delete, class:"btn btn-sm btn-outline-light"%>
+                  <%= link_to "undislike", undislike_post_path(post), method: :delete, class:"btn btn-outline-primary"%>
                 <% else %>
-                  <%= link_to "dislike", dislike_post_path(post), method: :post, class:"btn btn-sm btn-outline-light"%>
+                  <%= link_to "dislike", dislike_post_path(post), method: :post, class:"btn btn-outline-primary"%>
                 <% end %>
               <% end %>
             </div>

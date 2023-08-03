@@ -3,8 +3,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :delete_all
 
   validates :user, presence: true
-  validates :content, presence: true, length: { maximum: 500 }
-  validates :label, presence: true, length: { maximum: 50 }
+  validates :content, presence: true 
+  validates :label, presence: true
 
   acts_as_followable
   acts_as_votable

@@ -39,6 +39,8 @@ Rails.application.routes.draw do
     get 'signin', to: 'devise/sessions#new'
     get 'signout', to: 'devise/sessions#destroy'
     get 'signup', to: 'devise/registrations#new'
+    get 'edituser', to: 'devise/registrations#edit'
+    get 'deleteuser', to: 'devise/registrations#destroy'
   end
 
   root 'pages#home'
