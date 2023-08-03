@@ -33,9 +33,7 @@ Rails.application.routes.draw do
     end
   end
 
-    
-
-
+  
   devise_for :users
   as:user do 
     get 'signin', to: 'devise/sessions#new'
@@ -53,7 +51,6 @@ Rails.application.routes.draw do
 
   get 'followers', to: 'users#followers'
   get 'following', to: 'users#following'
-
 
 
 end

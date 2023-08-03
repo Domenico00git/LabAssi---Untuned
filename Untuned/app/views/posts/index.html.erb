@@ -3,7 +3,7 @@
     <p style="color: green"><%= notice %></p>
 
     <div class="row">
-      <h1 class="d-flex justify-content-center", style="color:#1DB954;">Forum</h1>
+      <h1 class="d-flex justify-content-center", style="color:#1DB954;">Untuned</h1>
     </div>
     <div class="row">
       <div class="col md-4 d-flex justify-content-left">
@@ -18,7 +18,7 @@
           <%= form.submit "Search", class:"btn btn-outline-success btn-sm" %>
         <% end %>
       </div>
-      <div class="col md-4 d-flex justify-content-center">
+      <div class="col md-4 d-flex justify-content-end">
         <%= link_to "See oldest posts first", oldest_posts_path, class:"btn btn-sm btn-outline-success"%>
       </div>
     </div>
@@ -34,27 +34,28 @@
             <%= link_to "Show this post", post %>
           </div>
 
-          <div class="col-md-2 d-flex justify-content-center">
-            Comments: <%=post.comments.count%>
+          <div class="col-md-4 d-flex justify-content-end">
+            Comments:⠀<%=post.comments.count%>
           </div>
 
-          <div class="col-md-2 d-flex justify-content-left">
-            👍 :<%= post.votes_for.up.size%> |
+          <div class="col-md-2 d-flex justify-content-start">
+            👍 :<%= post.votes_for.up.size%> 
+            ⠀|⠀
             👎 :<%= post.votes_for.down.size%>
           </div>
 
-          <div class="col-md-5 d-flex justify-content-end">
+          <div class="col-md-4 d-flex justify-content-end">
             <% if user_signed_in? %>
               <% if current_user.voted_up_on? post%>
-                <%= link_to "unlike", unlike_post_path(post), method: :delete, class:"btn btn-outline-light"%>
+                <%= link_to "unlike", unlike_post_path(post), method: :delete, class:"btn btn-sm btn-outline-light"%>
               <% else %>
-                <%= link_to "like", like_post_path(post), method: :post, class:"btn btn-outline-light"%>
+                <%= link_to "like", like_post_path(post), method: :post, class:"btn btn-sm btn-outline-light"%>
               <% end %>
     
               <% if current_user.voted_down_on? post%>
-                <%= link_to "undislike", undislike_post_path(post), method: :delete, class:"btn btn-outline-light"%>
+                <%= link_to "undislike", undislike_post_path(post), method: :delete, class:"btn btn-sm btn-outline-light"%>
               <% else %>
-                <%= link_to "dislike", dislike_post_path(post), method: :post, class:"btn btn-outline-light"%>
+                <%= link_to "dislike", dislike_post_path(post), method: :post, class:"btn btn-sm btn-outline-light"%>
               <% end %>
             <% end %>
           </div>

@@ -1,41 +1,61 @@
 
-<p>
+<div clas="row">
+  <div class="col">
     <% if comment.user.image.attached? %>
       <%= image_tag(comment.user.image, style: "display: inline-block; height: 30px; width: 30px; object-fit:cover; border-radius: 50%;")%>
     <% else %>
       <img src="/assets/default_picture.jpg" display="inline-block" height="30px" width="30px" object-fit="cover" border-radius="50%">
     <% end %>
-    <strong><%= link_to comment.user.username, user_path(comment.user.username)%></strong> 
-</p>
-
-<p>
-    <%= comment.body %>
-</p>
-
-<p>
+    <strong><%= link_to comment.user.username, user_path(comment.user.username)%></strong>   
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+    <div>
+      <%= comment.body %><br><br>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
     <strong>create:</strong>
     <%= time_ago_in_words(comment.created_at) %> |
     <strong>last update:</strong>
     <%= time_ago_in_words(comment.updated_at) %>
-</p>
-<div class="col-md-2 d-flex justify-content-left">
-            👍 :<%= comment.votes_for.up.size%> |
-            👎 :<%= comment.votes_for.down.size%>
-          </div>
-
-          <div class="col-md-5 d-flex justify-content-end">
-            <% if user_signed_in? %>
-              <% if current_user.voted_up_on? comment%>
-                <%= link_to "unlike", unlike_post_comment_path(comment), method: :delete, class:"btn btn-outline-light"%>
-              <% else %>
-                <%= link_to "like", like_post_comment_path(comment), method: :post, class:"btn btn-outline-light"%>
-              <% end %>
+  </div>
+  
+  <div class="col-md-3 d-flex justify-content-end">
+    <% if user_signed_in? %>
+      <% if current_user.voted_up_on? comment%>
+        <%= link_to "unlike", unlike_post_comment_path(comment.id), method: :delete, class:"btn btn-sm btn-outline-light"%>
+      <% else %>
+        <%= link_to "like", like_post_comment_path(comment.id), method: :post, class:"btn btn-sm btn-outline-light"%>
+      <% end %>
     
-              <% if current_user.voted_down_on? comment%>
-                <%= link_to "undislike", undislike_post_comment_path(comment), method: :delete, class:"btn btn-outline-light"%>
-              <% else %>
-                <%= link_to "dislike", dislike_post_comment_path(comment), method: :post, class:"btn btn-outline-light"%>
-              <% end %>
-            <% end %>
-          </div>
+      <% if current_user.voted_down_on? comment%>
+        <%= link_to "undislike", undislike_post_comment_path(comment.id), method: :delete, class:"btn btn-sm btn-outline-light"%>
+      <% else %>
+        <%= link_to "dislike", dislike_post_comment_path(comment.id), method: :post, class:"btn btn-sm btn-outline-light"%>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-md-2 d-flex justify-content-center">
+    👍 :<%= comment.votes_for.up.size%> 
+    ⠀|⠀
+    👎 :<%= comment.votes_for.down.size%>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3 d-flex justify-content-start">
+    <% if current_user == comment.user || current_user == @post.user %>
+      Delete comment
+    <% end %>
+    ⠀⠀
+    <% if current_user == comment.user %>
+      <%= link_to "Edit comment", '#'%>
+    <% end %>
+  </div>
+</div>
 <hr>
+

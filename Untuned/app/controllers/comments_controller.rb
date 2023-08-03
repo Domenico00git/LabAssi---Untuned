@@ -11,7 +11,14 @@ class CommentsController < ApplicationController
     def create
         @comment = current_user.comments.new(comment_params)
         if @comment.save 
-            redirect_to post_path(params[:post_id]), notice: "comment was successfully created"
+            redirect_to post_path(params[:post_id]), notice: "comment was successfully created."
+        end
+    end
+
+    def destroy
+        @comment = Comment.find(params[:id])
+        if @comment.destoy
+            redirect_to post_path(params[:post_id]), notice: "comment was successfully destroyed."
         end
     end
 

@@ -15,29 +15,25 @@
       <%= render @post %>
     </div>
     <div class="row">
+      <div class="col-md-7 d-flex justify-content-start">
+        <% if @post.user == current_user %>
+          <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-sm btn-outline-light" %>
+          <%= button_to "Delete post", @post, method: :delete, class:"btn btn-sm btn-outline-danger" %>
+        <% end %>
+      </div>
+      <div class="col-md-2 d-flex justify-content-end">
+        Comments:⠀<%=@post.comments.count%>
+      </div>
       <div class="col-md-2 d-flex justify-content-center">
-        👍 :<%= @post.votes_for.up.size%> |
+        👍 :<%= @post.votes_for.up.size%> 
+        ⠀|⠀
         👎 :<%= @post.votes_for.down.size%>
       </div>
-      <div class="col-md-2">
-        Comments: <%=@post.comments.count%>
-      </div>
-      <div class="col-md-4"></div>
-
-      <% if @post.user == current_user %>
-        <div class="col-md-2 d-flex justify-content-end">
-          <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-sm btn-outline-light" %>
-        </div>
-        <div class="col-md-2 d-flex justify-content-start">
-          <%= button_to "Delete post", @post, method: :delete, class:"btn btn-sm btn-outline-danger" %>
-        </div>
-      <% end %>
     </div>
     <hr>
+    <h2 class="d-flex justify-content-center", style="color:#1DB954;">Comment Section:</h2>
     
-    <h3 class="d-flex justify-content-center", style="color:#1DB954;">Comment Section:</h3>
-    <%= render @post.comments%>
-    <br>
+    <%= render @post.comments%><br>
 
     <% if user_signed_in? %>
       <h4>Leave a new comment</h4>

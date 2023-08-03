@@ -59,14 +59,13 @@
             </li>
           </ul>
         </div>
-
+        ⠀⠀
         <div>
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
                 <%= link_to "Log out", signout_path, method: :delete, class:"nav-link"%>
-              </li>
-
+              </li>⠀
               <% if current_user.image.attached? %>
                 <%= image_tag(current_user.image, style: "display: inline-block; height: 40px; width: 40px; object-fit:cover; border-radius: 50%;")%>
               <% else %>
