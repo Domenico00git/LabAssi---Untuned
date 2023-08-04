@@ -5,8 +5,9 @@
     <% else %>
       <img src="/assets/default_picture.jpg" display="inline-block" height="40px" width="40px" object-fit="cover" border-radius="50%">
     <% end %>
-    <strong><%= link_to post.user.username, user_path(post.user.username)%></strong>⠀-⠀
+    <strong><%= link_to post.user.username, user_path(post.user.username)%></strong>⠀
     <strong><%= post.label %></strong>
+    <% if user_signed_in? && current_user.following?(post) %>⠀🔔 <% end %>
   </p>
 
   <p>

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-2">
         <div><br>
-          <%= link_to "< Back to posts", posts_path, class:"btn btn-outline-light" %>
+          <%= link_to "< Back to post", post_path(@post), class:"btn btn-outline-light" %>
         </div>
       </div>
       <div class="col-md-8 d-flex justify-content-center">
@@ -15,9 +15,6 @@
     <br>
   
     <%= render "form", post: @post %>
-    <div>
-      <br>
-      <%= link_to "Show this post", @post %> 
-    </div>
+    
   </div>
 </body>

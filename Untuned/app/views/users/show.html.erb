@@ -1,60 +1,62 @@
 <body style="background-color:#1DB954;">
     <div class="container"><br>
+        <% if user_signed_in?%>
+            <%if @user.username == current_user.username%>
+                <div class="col-md-12 d-flex justify-content-end">
+                    <%= link_to "Edit account", edit_user_path, class:"btn btn-dark"%>
+                </div>
+            <% end %>
+        <% end %>
+
         <div class="row">
-            <div class="col-md-2 d-flex justify-content-center">
-                <% if user_signed_in?%>
-                    <%if @user.username == current_user.username%>
-                        <h3 class="d-flex justify-content-center">My Profile</h3>
-                    <%end%>
-                <% end %>
-            </div>
-            <div class="col-md-2 d-flex justify-content-start">
-                <% if user_signed_in?%>
-                    <%if @user.username == current_user.username%>
-                        <%= link_to "Edit account", edituser_path, class:"btn btn-outline-dark"%>
-                    <% end %>
-                <% end %>
-            </div>
-        </div><br>
-        <div class="row">
-            <div class="col-md-2 d-flex justify-content-center">
+            <div class="col-md-3 d-flex justify-content-end">
                 <% if @user.image.attached? %>
-                    <%= image_tag(@user.image, style: "display: inline-block; height: 200px; width: 200px; object-fit:cover; border-radius: 50%;")%>
+                    <%= image_tag(@user.image, style: "display: inline-block; height: 200px; width: 180px; object-fit:cover; border-radius: 50%;")%>
                 <% else %>
-                    <img src="/assets/default_picture.jpg" display="inline-block" height="200px" widgith="200px" object-fit="cover" border-radius="50%">
+                    <img src="/assets/default_picture.jpg" display="inline-block" height="200px" width="180px" object-fit="cover" border-radius="50%">
                 <% end %>
             </div>
-            <div class="col-md-3 d-flex justify-content-start">
-                <h2>
-                    <br>
-                    <%= @user.username%>
-                    <br>
+            <div class="col-md-4 d-flex justify-content-start">
+                <div>
                     <% if user_signed_in?%>
-                        <%if @user.username != current_user.username%>
-                            <% if current_user.following?(@user) %>
+                        <%if @user.username == current_user.username%>
+                            <br><br>
+                            <h6>My Profile</h6>
+                        <% else %>
+                            <br><br><br>
+                        <%end%>
+                    <% else %>
+                        <br><br><br>
+                    <% end %>
+
+                    <h1><%= @user.username %></h1>
+
+                    <% if user_signed_in? && @user.username != current_user.username%>
+                        <% if current_user.following?(@user) %>
+                            <div class="d-flex justify-content-center">
                                 <%= link_to "Unfollow", unfollow_user_path(@user.username),
-                                method: :delete, class:"btn btn-primary w-50" %>
-                            <% else %>
-                                <%= link_to "Follow", follow_user_path(@user.username),
-                                method: :post, class:"btn btn-outline-dark w-50" %>
-                            <% end %>
-                
+                                method: :delete, class:"btn btn-primary w-75" %>
+                            </div>
                         <% else %>
                             <div class="d-flex justify-content-center">
-                                <button class="btn btn-sm btn-outline-dark">
-                                    <%= link_to "FOLLOWERS :", followers_path, class:"btn btn-sm"%>
-                                    <%= @user.count_user_followers %> 
-                                </button>
-                                <button class="btn btn-sm btn-outline-dark">
-                                    <%= link_to "FOLLOWING :", following_path, class:"btn btn-sm"%>
-                                    <%= @user.following_users_count %>
-                                </button>
+                                <%= link_to "Follow", follow_user_path(@user.username),
+                                method: :post, class:"btn btn-outline-dark w-75" %>
                             </div>
                         <% end %>
                     <% end %>
-                </h2>
+
+                    <% if user_signed_in? && @user.username == current_user.username%>
+                        <h6><br>
+                            <%= @user.count_user_followers %>
+                            <%= link_to "Followers", followers_path %>⠀-⠀
+                            <%= @user.following_users_count %>
+                            <%= link_to "Following", following_path %>
+                        </h6>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>
 </body>
+       
        

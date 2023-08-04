@@ -28,15 +28,15 @@
   <div class="col-md-3 d-flex justify-content-end">
     <% if user_signed_in? %>
       <% if current_user.voted_up_on? comment%>
-        <%= link_to "unlike", unlike_post_comment_path(comment.id), method: :delete, class:"btn btn-sm btn-outline-light"%>
+        <%= link_to "unlike", unlike_post_comment_path(comment.id), method: :delete, class:"btn btn-sm btn-primary"%>
       <% else %>
-        <%= link_to "like", like_post_comment_path(comment.id), method: :post, class:"btn btn-sm btn-outline-light"%>
+        <%= link_to "like", like_post_comment_path(comment.id), method: :post, class:"btn btn-sm btn-outline-primary"%>
       <% end %>
     
       <% if current_user.voted_down_on? comment%>
-        <%= link_to "undislike", undislike_post_comment_path(comment.id), method: :delete, class:"btn btn-sm btn-outline-light"%>
+        <%= link_to "undislike", undislike_post_comment_path(comment.id), method: :delete, class:"btn btn-sm btn-primary"%>
       <% else %>
-        <%= link_to "dislike", dislike_post_comment_path(comment.id), method: :post, class:"btn btn-sm btn-outline-light"%>
+        <%= link_to "dislike", dislike_post_comment_path(comment.id), method: :post, class:"btn btn-sm btn-outline-primary"%>
       <% end %>
     <% end %>
   </div>
@@ -49,7 +49,7 @@
 <div class="row">
   <div class="col-md-3 d-flex justify-content-start">
     <% if current_user == comment.user || current_user == @post.user %>
-      Delete comment
+      <%= link_to "Delete comment", '#'%>
     <% end %>
     ⠀⠀
     <% if current_user == comment.user %>

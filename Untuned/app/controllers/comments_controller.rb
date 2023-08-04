@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
     def show
         @comment = Comment.find(params[:id])
-      end
+    end
 
     def create
         @comment = current_user.comments.new(comment_params)
@@ -16,10 +16,9 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        @comment = Comment.find(params[:id])
-        if @comment.destoy
-            redirect_to post_path(params[:post_id]), notice: "comment was successfully destroyed."
-        end
+        @comment = current_user.comments.find(params[:id])
+        @comment.destoy
+        redirect_to post_path(params[:post_id]), notice: "comment was successfully destroyed."
     end
 
     private

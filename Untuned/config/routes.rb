@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'users/:username', to: 'users#show', as: 'user'
+  get 'posts/:id', to: 'posts#show', as: 'post'
 
   resources :users, only: :show, param: :username do
     member do
-      get 'follow', to: 'follows#create'
-      get 'unfollow', to: 'follows#destroy'
+      get 'follow', to: 'follows#create1'
+      get 'unfollow', to: 'follows#destroy1'
     end
   end
 
@@ -20,6 +21,11 @@ Rails.application.routes.draw do
 
       get 'dislike', to: 'votes#createdislike'
       get 'undislike', to: 'votes#destroydislike'
+      get 'deletecomment', to: 'comments#destroy'
+
+      get 'followpost', to: 'follows#create2'
+      get 'unfollowpost', to: 'follows#destroy2'
+
     end
 
     resources :comments do
@@ -39,8 +45,8 @@ Rails.application.routes.draw do
     get 'signin', to: 'devise/sessions#new'
     get 'signout', to: 'devise/sessions#destroy'
     get 'signup', to: 'devise/registrations#new'
-    get 'edituser', to: 'devise/registrations#edit'
-    get 'deleteuser', to: 'devise/registrations#destroy'
+    get 'edit_user', to: 'devise/registrations#edit'
+    get 'delete_user', to: 'devise/registrations#destroy'
   end
 
   root 'pages#home'
@@ -53,6 +59,5 @@ Rails.application.routes.draw do
 
   get 'followers', to: 'users#followers'
   get 'following', to: 'users#following'
-
 
 end

@@ -1,13 +1,26 @@
 <body style="background-color:black">
-  
-  <p style="color: green"><%= notice %></p>
   <div class="container", style="color:lightgrey;">
+    <p style="color: green"><%= notice %></p>
+
     <div class="row">
-      <div class="col md-2 d-flex justify-content-right">
+      <div class="col-md-2 d-flex justify-content-start">
         <div>
           <br>
           <%= link_to "< Back to posts", posts_path, class:"btn btn-outline-light"%>
         </div>
+      </div>
+      <div class="col-md-10 d-flex justify-content-end">
+        <% if user_signed_in? && @post.user != current_user %><br>
+          <div><br>
+            <% if current_user.following?(@post) %>
+              <%= link_to "Unfollow this post", unfollowpost_post_path(@post.id),
+              method: :delete, class:"btn btn-primary" %>
+            <% else %>
+              <%= link_to "Follow this post", followpost_post_path(@post.id),
+              method: :post, class:"btn btn-outline-primary" %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
     <br>
@@ -16,9 +29,9 @@
     </div>
     <div class="row">
       <div class="col-md-7 d-flex justify-content-start">
-        <% if @post.user == current_user %>
+        <% if user_signed_in? && @post.user == current_user %>
           <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-sm btn-outline-light" %>
-          <%= button_to "Delete post", @post, method: :delete, class:"btn btn-sm btn-outline-danger" %>
+          <%= button_to "Delete post", @post, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-sm btn-outline-danger" %>
         <% end %>
       </div>
       <div class="col-md-2 d-flex justify-content-end">
@@ -31,7 +44,7 @@
       </div>
     </div>
     <hr>
-    <h2 class="d-flex justify-content-center", style="color:#1DB954;">Comment Section:</h2>
+    <h2 class="d-flex justify-content-center", style="color:#1DB954;">Comment Section</h2>
     
     <%= render @post.comments%><br>
 
