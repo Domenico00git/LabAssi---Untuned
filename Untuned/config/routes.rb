@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'users/:username', to: 'users#show', as: 'user'
-  get 'posts/:id', to: 'posts#show', as: 'post'
+  
 
   resources :users, only: :show, param: :username do
     member do
@@ -16,11 +16,11 @@ Rails.application.routes.draw do
 
   resources :posts do
     member do
-      get 'like', to: 'votes#createlike'
-      get 'unlike', to: 'votes#destroylike'
+      get 'like', to: 'votes_comment#createlike'
+      get 'unlike', to: 'votes_comment#destroylike'
 
-      get 'dislike', to: 'votes#createdislike'
-      get 'undislike', to: 'votes#destroydislike'
+      get 'dislike', to: 'votes_comment#createdislike'
+      get 'undislike', to: 'votes_comment#destroydislike'
       get 'deletecomment', to: 'comments#destroy'
 
       get 'followpost', to: 'follows#create2'

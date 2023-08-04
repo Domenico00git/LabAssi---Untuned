@@ -4,3 +4,4 @@ import "controllers"
 
 //= require jquery
 //= require boostrap-sprockets
+

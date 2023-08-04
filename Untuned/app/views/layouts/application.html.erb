@@ -43,10 +43,10 @@
                   <%= link_to "Admin Area", admin_path, class:"nav-link"%>
                 </li> 
               <% end %>
-
             <% end %>
           </ul>
         </div>
+
 
         <div>
           <ul class="navbar-nav">
@@ -60,6 +60,11 @@
           </ul>
         </div>
         ⠀⠀
+        <div>
+          <ul class="navbar-nav">
+            <%= render 'layouts/notifications' %>
+          </ul>
+        </div>
         <div>
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
@@ -89,6 +94,5 @@
     </nav>
   
     <%= yield %>
-
   </body>
 </html>
