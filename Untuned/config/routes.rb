@@ -16,12 +16,11 @@ Rails.application.routes.draw do
 
   resources :posts do
     member do
-      get 'like', to: 'votes_comment#createlike'
-      get 'unlike', to: 'votes_comment#destroylike'
+      get 'like', to: 'votes#createlike'
+      get 'unlike', to: 'votes#destroylike'
 
-      get 'dislike', to: 'votes_comment#createdislike'
-      get 'undislike', to: 'votes_comment#destroydislike'
-      get 'deletecomment', to: 'comments#destroy'
+      get 'dislike', to: 'votes#createdislike'
+      get 'undislike', to: 'votes#destroydislike'
 
       get 'followpost', to: 'follows#create2'
       get 'unfollowpost', to: 'follows#destroy2'

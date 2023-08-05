@@ -18,18 +18,18 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-5">
     <strong>create:</strong>
     <%= time_ago_in_words(comment.created_at) %> 
     <i class="bi bi-distribute-horizontal"></i>
     <strong>last update:</strong>
     <%= time_ago_in_words(comment.updated_at) %>
   </div>
-  <div class="col-md-4 d-flex justify-content-center">
+  <div class="col-md-2 d-flex justify-content-center">
     <i class="bi bi-hand-thumbs-up-fill"></i>⠀<%= comment.votes_for.up.size%>⠀⠀
     <i class="bi bi-hand-thumbs-down-fill"></i>⠀<%= comment.votes_for.down.size%>
   </div>
-  <div class="col-md-4 d-flex justify-content-end">
+  <div class="col-md-5 d-flex justify-content-end">
     <% if user_signed_in? %>
       <% if current_user.voted_up_on? comment%>
         <%= link_to "unlike", unlike_post_comment_path(comment.id), method: :delete, class:"btn btn-sm btn-primary"%>
