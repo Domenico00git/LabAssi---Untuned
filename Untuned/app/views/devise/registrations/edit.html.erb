@@ -41,6 +41,11 @@
 
           <div class="col">
             <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control w-100" %>
+            </div>
+
+            <div class="field">
               <%= f.label :New_password %><br />
               <%= f.password_field :password, placeholder:"Blank if you don't want to change", class:"form-control w-100" %>
             </div>
@@ -54,12 +59,12 @@
               <%= f.label :current_password %><br />
               <%= f.password_field :current_password, placeholder:"Need to confirm the changes", class:"form-control w-100" %>
             </div>
+          </div>
 
-            <div class="col">
-              <div class="actions"><br>
-                <%= f.submit "Update", class:"btn btn-outline-dark w-100" %>
-              </div>  
-            </div>
+          <div class="row">
+            <div class="actions"><br>
+              <%= f.submit "Update", class:"btn btn-outline-dark w-100" %>
+            </div>  
           </div>
         </div>
         <br><br><br>

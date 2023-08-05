@@ -21,7 +21,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   #PUT /resource
   def update
-      super
+      if current_user.update(account_update_params)
+        redirect_to root_path, notice: 'Your account has been updated'
+      else
+        render :edit
+      end
   end
 
   #DELETE /resource
@@ -42,12 +46,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:image, :name, :lastname, :birthdate])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:image])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:image, :name, :lastname, :birthdate])
   end
 
   # The path used after sign up.
