@@ -13,11 +13,11 @@
         <% if user_signed_in? && @post.user != current_user %><br>
           <div><br>
             <% if current_user.following?(@post) %>
-              <%= link_to "Unfollow this post", unfollowpost_post_path(@post.id),
-              method: :delete, class:"btn btn-primary" %>
+              <%= link_to "Following", unfollowpost_post_path(@post.id),
+              method: :delete, class:"btn btn-light" %>
             <% else %>
-              <%= link_to "Follow this post", followpost_post_path(@post.id),
-              method: :post, class:"btn btn-outline-primary" %>
+              <%= link_to "Follow", followpost_post_path(@post.id),
+              method: :post, class:"btn btn-primary" %>
             <% end %>
           </div>
         <% end %>
@@ -28,18 +28,16 @@
       <%= render @post %>
     </div>
     <div class="row">
-      <div class="col-md-7 d-flex justify-content-start">
+      <div class="col-md-4 d-flex justify-content-start">
         <% if user_signed_in? && @post.user == current_user %>
           <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-sm btn-outline-light" %>
           <%= button_to "Delete post", @post, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-sm btn-outline-danger" %>
         <% end %>
       </div>
-      <div class="col-md-2 d-flex justify-content-end">
-        Comments:⠀<%=@post.comments.count%>
-      </div>
-      <div class="col-md-2 d-flex justify-content-center">
-        👍 :<%= @post.votes_for.up.size%> ⠀
-        👎 :<%= @post.votes_for.down.size%>
+      <div class="col-md-4 d-flex justify-content-center">
+        <i class="bi bi-chat-dots-fill"></i>⠀<%=@post.comments.count%>⠀⠀
+        <i class="bi bi-hand-thumbs-up-fill"></i>⠀<%= @post.votes_for.up.size%> ⠀⠀
+        <i class="bi bi-hand-thumbs-down-fill"></i>⠀<%= @post.votes_for.down.size%>
       </div>
     </div>
     <hr>
@@ -48,7 +46,7 @@
     <%= render @post.comments%><br>
 
     <% if user_signed_in? %>
-      <h4>Leave a new comment</h4>
+      <h4>New comment</h4>
       <%= render partial:'comments/form'%>
     <%end %>
     <br>

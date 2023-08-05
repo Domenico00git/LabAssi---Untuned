@@ -7,7 +7,7 @@
     <% end %>
     <strong><%= link_to post.user.username, user_path(post.user.username)%></strong>⠀
     <strong><%= post.label %></strong>
-    <% if user_signed_in? && current_user.following?(post) %>⠀🔔 <% end %>
+    <% if user_signed_in? && current_user.following?(post) %>⠀<i class="bi bi-bell-fill"></i> <% end %>
   </p>
 
   <p>
@@ -17,7 +17,7 @@
   <p>
     <strong>create:</strong>
     <%= time_ago_in_words(post.created_at) %> 
-    ⠀|⠀
+    <i class="bi bi-distribute-horizontal"></i>
     <strong>last update:</strong>
     <%= time_ago_in_words(post.updated_at) %>
   </p>

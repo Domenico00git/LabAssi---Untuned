@@ -3,7 +3,9 @@
     <p style="color: green"><%= notice %></p>
 
     <div class="row">
-      <h1 class="d-flex justify-content-center", style="color:#1DB954;">Untuned</h1>
+      <h3 class="d-flex justify-content-center", style="color:#1DB954;">
+        <i class="bi bi-repeat">⠀</i><i class="bi bi-caret-left-fill"></i>⠀UNTUNED⠀<i class="bi bi-caret-right-fill"></i>⠀<i class="bi bi-shuffle"></i><br>
+      </h3>
     </div>
     <br>
     <div class="row">
@@ -30,17 +32,14 @@
 
           <div class="row">
                 
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= link_to "Show this post", post %>
             </div>
 
-            <div class="col-md-4 d-flex justify-content-end">
-              Comments:⠀<%=post.comments.count%>
-            </div>
-
-            <div class="col-md-2 d-flex justify-content-start">
-              👍 :<%= post.votes_for.up.size%> ⠀
-              👎 :<%= post.votes_for.down.size%>
+            <div class="col-md-6 d-flex justify-content-center">
+              <i class="bi bi-chat-dots-fill"></i>⠀<%=post.comments.count%>⠀⠀
+              <i class="bi bi-hand-thumbs-up-fill"></i>⠀<%= post.votes_for.up.size%> ⠀⠀
+              <i class="bi bi-hand-thumbs-down-fill"></i>⠀<%= post.votes_for.down.size%>
             </div>
 
             <div class="col-md-3 d-flex justify-content-end">

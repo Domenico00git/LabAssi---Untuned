@@ -29,18 +29,24 @@
                         <br><br><br>
                     <% end %>
 
-                    <h1><%= @user.username %></h1>
+                    <h1><%= @user.username %>
+                        <% if current_user && current_user.following?(@user)%>
+                            <i class="bi bi-person-check"></i>
+                        <% elsif current_user && @user != current_user && !current_user.following?(@user)%>
+                            <i class="bi bi-person-plus"></i>
+                        <% end %>
+                    </h1>
 
                     <% if user_signed_in? && @user.username != current_user.username%>
                         <% if current_user.following?(@user) %>
                             <div class="d-flex justify-content-center">
-                                <%= link_to "Unfollow", unfollow_user_path(@user.username),
-                                method: :delete, class:"btn btn-primary w-75" %>
+                                <%= link_to "Following", unfollow_user_path(@user.username),
+                                method: :delete, class:"btn btn-light w-50" %>
                             </div>
                         <% else %>
                             <div class="d-flex justify-content-center">
                                 <%= link_to "Follow", follow_user_path(@user.username),
-                                method: :post, class:"btn btn-outline-dark w-75" %>
+                                method: :post, class:"btn btn-primary w-50" %>
                             </div>
                         <% end %>
                     <% end %>

@@ -24,18 +24,14 @@
                 <%= render post %>
             </div>
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <%= link_to "Show this post", post %>
                 </div>
 
-                <div class="col-md-4 d-flex justify-content-end">
-                    Comments:⠀<%=post.comments.count%>
-                </div>
-
-                <div class="col-md-2 d-flex justify-content-start">
-                    👍 :<%= post.votes_for.up.size%> 
-                    ⠀|⠀
-                    👎 :<%= post.votes_for.down.size%>
+                <div class="col-md-6 d-flex justify-content-center">
+                    <i class="bi bi-chat-dots-fill"></i>⠀<%=post.comments.count%>⠀⠀
+                    <i class="bi bi-hand-thumbs-up-fill"></i>⠀<%= post.votes_for.up.size%> ⠀⠀
+                    <i class="bi bi-hand-thumbs-down-fill"></i>⠀<%= post.votes_for.down.size%>
                 </div>
             </div>
 
@@ -43,7 +39,7 @@
 
         <div class="text-center">
             <% if !@topics[0].present?%>
-                <h2> No Posts found </h2>
+                <h3> No Post found </h3>
             <% end %>
         </div>
     </div>
