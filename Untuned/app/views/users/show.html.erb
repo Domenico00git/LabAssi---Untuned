@@ -31,9 +31,7 @@
 
                     <h1><%= @user.username %>
                         <% if current_user && current_user.following?(@user)%>
-                            <i class="bi bi-person-check"></i>
                         <% elsif current_user && @user != current_user && !current_user.following?(@user)%>
-                            <i class="bi bi-person-plus"></i>
                         <% end %>
                     </h1>
 

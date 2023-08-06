@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+    before_action :set_post, only: [:destroy, :update, :edit]
+    before_action :set_comment, only: [:destroy, :update, :edit]
     
     def index
         @comments = Comment.all
@@ -16,9 +19,29 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        @comment = current_user.comments.find(params[:id])
-        @comment.destoy
+        @comment.destroy
         redirect_to post_path(params[:post_id]), notice: "comment was successfully destroyed."
+    end
+
+    def edit
+    end
+
+    def update
+        if @comment.update(comment_params)
+            redirect_to post_path(params[:post_id]), notice: "comment was successfully updated"
+            
+        else
+            render :edit
+        end
+    end
+
+    def set_post
+        @post = Post.find(params[:post_id])
+    end
+
+    def set_comment
+        @comment = @post.comments.find(params[:id])
+
     end
 
     private
