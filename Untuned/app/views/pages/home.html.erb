@@ -3,17 +3,27 @@
     <div class="container"><br>
         <% if user_signed_in? %>
             <h1 style="color:#1DB954;">
-                Hi <%= current_user.name%>,<br> welcome to Untuned<i class="bi bi-music-note"></i>
+                Hi <%= current_user.name%>, welcome back to Untuned
             </h1>
+            <br>
+            <p style="color:lightgrey">
+                Untuned is the perfect app for music enthusiasts who want to express their passion, discover new songs and artists, and connect with a global community of music lovers.<br>
+                Whether you're a music critic, a live concert enthusiast, or simply a curious listener, Untuned will be your ultimate music guide!
+            </p>
             <br><br><br>
             <%= link_to "My Profile", user_path(current_user.username), class:"btn w-100 btn-lg btn-outline-light"%>
             <%= link_to "Go To Forum", posts_path, class:"btn w-100 btn-lg btn-outline-light"%>
 
         <% else %>
             <h1 style="color:#1DB954;">
-                Welcome to Untuned<i class="bi bi-music-note"></i>
+                Welcome to Untuned
             </h1>
-            <br><br><br>
+            <br>
+            <p style="color:lightgrey">
+                Untuned is the perfect app for music enthusiasts who want to express their passion, discover new songs and artists, and connect with a global community of music lovers.<br>
+                Whether you're a music critic, a live concert enthusiast, or simply a curious listener, Untuned will be your ultimate music guide!
+            </p>
+            <br><br>
             <%= link_to "Sign in", signin_path, class:"btn w-100 btn-lg btn-outline-light"%>
             <br><br><br>
             <p style="color:lightgrey;">Don't have an account yet?</p>

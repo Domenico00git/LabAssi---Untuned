@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_one_attached :image
   has_many :posts, dependent: :delete_all
   has_many :comments, dependent: :delete_all
-  has_many :notifications, as: :recipient, dependent: :delete_all
+  has_many :notifications, as: :recipient, dependent: :destroy
  
   validates :username, presence: true, uniqueness: true, length: { minimum: 5}
 

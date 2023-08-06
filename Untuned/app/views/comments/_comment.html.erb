@@ -53,7 +53,7 @@
     <% end %>
 
     <% if current_user == comment.user || current_user == @post.user %>
-      <%= button_to "Delete comment", post_comment_path(@post, comment), method: :delete, class:"btn btn-sm btn-outline-danger"%>
+      <%= button_to "Delete comment", post_comment_path(@post, comment), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-sm btn-outline-danger"%>
     <% end %>
   </div>
 </div>
