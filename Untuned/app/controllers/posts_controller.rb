@@ -26,6 +26,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = current_user.posts.new(post_params)
+    @post.update(comments_enabled: true)
     if @post.save
       redirect_to post_url(@post), notice: "Post was successfully created." 
     else
@@ -49,6 +50,19 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_url, notice: "Post was successfully destroyed." 
   end
+
+  def enable_comments
+    @post = Post.find(params[:id])
+    @post.update(comments_enabled: true)
+    redirect_to post_url(@post), notice: "Comments enabled for this post"
+  end
+
+  def disable_comments
+    @post = Post.find(params[:id])
+    @post.update(comments_enabled: false)
+    redirect_to post_url(@post), notice: "Comments disabled for this post"
+  end
+
 
   private
     def post_params

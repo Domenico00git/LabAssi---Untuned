@@ -30,7 +30,7 @@
     <div class="row">
       <div class="col-md-4 d-flex justify-content-start">
         <% if user_signed_in? && @post.user == current_user %>
-          <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-sm btn-outline-light" %>
+          <%= link_to "Edit post", edit_post_path(@post), class:"btn btn-sm btn-outline-light" %>
           <%= button_to "Delete post", @post, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-sm btn-outline-danger" %>
         <% end %>
       </div>
@@ -39,17 +39,42 @@
         <i class="bi bi-hand-thumbs-up-fill"></i>⠀<%= @post.votes_for.up.size%> ⠀⠀
         <i class="bi bi-hand-thumbs-down-fill"></i>⠀<%= @post.votes_for.down.size%>
       </div>
+      <div class="col-md-4 d-flex justify-content-end">
+        <% if current_user == @post.user && @post.comments_enabled %>
+          <%= link_to "Disable Comments", disable_comments_post_path(@post), class:"btn btn-sm btn-outline-light" %>
+        <% elsif current_user == @post.user && !@post.comments_enabled %> 
+          <%= link_to "Enable Comments", enable_comments_post_path(@post), class:"btn btn-sm btn-outline-light" %>
+        <% end %>
+      </div>
     </div>
     <hr>
-    <h2 class="d-flex justify-content-center", style="color:#1DB954;">Comment Section</h2>
+
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8 d-flex justify-content-center">
+        <h2 class="d-flex justify-content-center", style="color:#1DB954;">Comment Section</h2>
+      </div>
+      <div class="col-md-2 d-flex justify-content-end">
+      </div>
+
+
     
     <%= render @post.comments%><br>
 
-    <% if user_signed_in? %>
-      <h4>New comment</h4>
-      <%= render partial:'comments/form'%>
-    <%end %>
-    <br>
+    <% if user_signed_in? && @post.comments_enabled%>
+      <div clss="d-flex justify-content-center">
+        <h4>New comment</h4>
+        <%= render partial:'comments/form'%>
+        <br><br>
+      </div>
+    <% else %>
+      <div clss="d-flex justify-content-center">
+        <h4>
+          Comments are disabled
+          <br><br>
+        </h4>
+      </div>
+    <% end %>
   </div>
 </body>
 

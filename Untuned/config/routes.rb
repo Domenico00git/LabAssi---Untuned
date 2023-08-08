@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'topics/index'
   get 'profiles/index'
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  #devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'users/:username', to: 'users#show', as: 'user'
   
@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 
       get 'followpost', to: 'follows#create2'
       get 'unfollowpost', to: 'follows#destroy2'
+
+      get 'enable_comments', to: 'posts#enable_comments'
+      get 'disable_comments', to: 'posts#disable_comments'
 
     end
 
@@ -48,6 +51,7 @@ Rails.application.routes.draw do
     get 'edit_user', to: 'devise/registrations#edit'
     get 'delete_user', to: 'devise/registrations#destroy'
   end
+
 
   root 'pages#home'
   get 'contact', to: 'pages#contact'

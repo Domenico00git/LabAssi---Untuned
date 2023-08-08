@@ -1,18 +1,19 @@
-
+<br>
 <div clas="row">
-  <div class="col">
+  <div class="col d-flex justify-content-start">
     <% if comment.user.image.attached? %>
-      <%= image_tag(comment.user.image, style: "display: inline-block; height: 30px; width: 30px; object-fit:cover; border-radius: 50%;")%>
+      <%= image_tag(comment.user.image, style: "display: inline-block; height: 40px; width: 40px; object-fit:cover; border-radius: 50%;")%>
     <% else %>
-      <img src="/assets/default_picture.jpg" display="inline-block" height="30px" width="30px" object-fit="cover" border-radius="50%">
+      <img src="/assets/default_picture.jpg" display="inline-block" height="40px" width="40px" object-fit="cover" border-radius="50%">
     <% end %>
-    <strong><%= link_to comment.user.username, user_path(comment.user.username)%></strong>   
+    <strong>⠀<%= link_to comment.user.username, user_path(comment.user.username)%></strong>   
   </div>
 </div>
 <br>
 <div class="row">
   <div class="col">
     <div>
+      <br>
       <%= comment.body %><br><br>
     </div>
   </div>
@@ -47,7 +48,7 @@
 </div>
 <div class="row">
   <div class="col-md-3 d-flex justify-content-start">
-
+    <br>
     <% if current_user == comment.user %>
       <%= link_to "Edit comment", edit_post_comment_path(@post, comment), class:"btn btn-sm btn-outline-light" %>
     <% end %>
@@ -55,6 +56,8 @@
     <% if current_user == comment.user || current_user == @post.user %>
       <%= button_to "Delete comment", post_comment_path(@post, comment), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-sm btn-outline-danger"%>
     <% end %>
+    <br>
+    <br>
   </div>
 </div>
 <hr>

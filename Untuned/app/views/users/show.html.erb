@@ -39,12 +39,12 @@
                         <% if current_user.following?(@user) %>
                             <div class="d-flex justify-content-center">
                                 <%= link_to "Following", unfollow_user_path(@user.username),
-                                method: :delete, class:"btn btn-light w-50" %>
+                                method: :delete, class:"btn btn-sm btn-light w-50" %>
                             </div>
                         <% else %>
                             <div class="d-flex justify-content-center">
                                 <%= link_to "Follow", follow_user_path(@user.username),
-                                method: :post, class:"btn btn-primary w-50" %>
+                                method: :post, class:"btn btn-sm btn-primary w-50" %>
                             </div>
                         <% end %>
                     <% end %>
