@@ -98,10 +98,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_210010) do
     t.string "lastname"
     t.date "birthdate"
     t.boolean "admin", default: false
-    t.string "full_name"
-    t.string "uid"
-    t.string "avatar_url"
-    t.string "provider"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

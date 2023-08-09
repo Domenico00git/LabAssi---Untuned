@@ -4,13 +4,14 @@ Rails.application.routes.draw do
 
   #devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get 'users/:username', to: 'users#show', as: 'user'
   
+  devise_for :users 
 
   resources :users, only: :show, param: :username do
     member do
       get 'follow', to: 'follows#create1'
       get 'unfollow', to: 'follows#destroy1'
+      get 'users/:username', to: 'users#show'
     end
   end
 
@@ -41,18 +42,6 @@ Rails.application.routes.draw do
     end
   end
 
-
-  
-  devise_for :users
-  as:user do 
-    get 'signin', to: 'devise/sessions#new'
-    get 'signout', to: 'devise/sessions#destroy'
-    get 'signup', to: 'devise/registrations#new'
-    get 'edit_user', to: 'devise/registrations#edit'
-    get 'delete_user', to: 'devise/registrations#destroy'
-  end
-
-
   root 'pages#home'
   get 'contact', to: 'pages#contact'
   get 'posts', to: 'posts#index'
@@ -63,5 +52,6 @@ Rails.application.routes.draw do
 
   get 'followers', to: 'users#followers'
   get 'following', to: 'users#following'
+
 
 end

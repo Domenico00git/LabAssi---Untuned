@@ -45,7 +45,7 @@
               <li class="nav-item">
                 <%= link_to "My Profile", user_path(current_user.username), class:"nav-link"%>
               </li>
-
+        
               <% if current_user.admin?%>
                 <li class="nav-item">
                   <%= link_to "Admin Area", admin_path, class:"nav-link"%>
@@ -77,7 +77,7 @@
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to "Log out", signout_path, method: :delete, class:"nav-link"%>
+                <%= button_to "Log out", destroy_user_session_path, method: :delete, class:"nav-link"%>
               </li>⠀
               <% if current_user.image.attached? %>
                 <%= image_tag(current_user.image, style: "display: inline-block; height: 40px; width: 40px; object-fit:cover; border-radius: 50%;")%>
@@ -87,11 +87,11 @@
 
             <% else %>
               <li class="nav-item">
-                <%= link_to "Sign up", signup_path, class:"nav-link"%>
+                <%= link_to "Sign up", new_user_registration_path, class:"nav-link"%>
               </li>
 
               <li class="nav-item">
-                <%= link_to "Sign in", signin_path, class:"nav-link"%>
+                <%= link_to "Sign in", new_user_session_path, class:"nav-link"%>
               </li>
 
             <% end %>
