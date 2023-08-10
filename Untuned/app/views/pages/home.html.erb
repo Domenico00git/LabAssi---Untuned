@@ -1,6 +1,7 @@
 <body style="background-color:black">
     <img src="/assets/background.jpg" class="opacity-50" style="position: fixed; top: 10; left: 0; width: 100%; height: 100%; z-index: -1;">
     <div class="container"><br>
+    <p style="color: green"><%= notice %></p>
         <% if user_signed_in? %>
             <h1 style="color:#1DB954;">
                 Hi <%= current_user.name%>, welcome back to Untuned

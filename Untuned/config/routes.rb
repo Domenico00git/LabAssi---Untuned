@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   
   devise_for :users 
 
+  as:user do
+    get 'deleteuser', to:'devise/registrations#destroy'
+  end
+
+
   resources :users, only: :show, param: :username do
     member do
       get 'follow', to: 'follows#create1'
@@ -52,6 +57,5 @@ Rails.application.routes.draw do
 
   get 'followers', to: 'users#followers'
   get 'following', to: 'users#following'
-
 
 end
