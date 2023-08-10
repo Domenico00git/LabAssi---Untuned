@@ -25,15 +25,12 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'progettoassi360@gmail.com'
-  config.omniauth :google_oauth2,
-                  Rails.application.credentials.dig(:google_oauth_client_id),
-                  Rails.application.credentials.dig(:google_oauth_secret_client)
-
+  
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  config.mailer = 'Devise::Mailer'
 
   # Configure the parent class responsible to send e-mails.
-  # config.parent_mailer = 'ActionMailer::Base'
+  config.parent_mailer = 'ActionMailer::Base'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
