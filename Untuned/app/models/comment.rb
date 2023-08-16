@@ -9,6 +9,8 @@ class Comment < ApplicationRecord
   
   has_noticed_notifications model_name: 'Notification'
 
+  validates :body, presence: true, length: { minimum: 1}
+
   private
 
   def notify_recipient

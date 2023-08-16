@@ -2,23 +2,22 @@
 <body style="background-color:#1DB954;">
   <h2 class="d-flex justify-content-center">Forgot your password?</h2>
   <br>
-  <div class="d-flex justify-content-center">
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Send me reset password instructions", class:"btn btn-outline-dark"%>
-      </div>
-
-      <div>
-        <br><%= render "devise/shared/links" %>
-      </div>
-    <% end %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+        </div>
+        <br>
+        <div class="actions">
+          <%= f.submit "Send me reset password instructions", class:"btn btn-outline-dark"%>
+        </div>
+      <% end %>
+    </div>
+    <%= render "devise/shared/links" %>
   </div>
 </body>
   

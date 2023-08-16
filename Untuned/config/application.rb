@@ -20,5 +20,6 @@ module Untuned
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.app_generators.scaffold_controller = :scaffold_controller
+
   end
 end

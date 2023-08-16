@@ -61,13 +61,13 @@
     
     <%= render @post.comments%><br>
 
-    <% if user_signed_in? && @post.comments_enabled%>
+    <% if user_signed_in? && @post.comments_enabled %>
       <div clss="d-flex justify-content-center">
         <h4>New comment</h4>
         <%= render partial:'comments/form'%>
         <br><br>
       </div>
-    <% else %>
+    <% elsif user_signed_in? && !@post.comments_enabled %>
       <div clss="d-flex justify-content-center">
         <h4>
           Comments are disabled

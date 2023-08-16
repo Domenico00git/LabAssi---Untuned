@@ -22,52 +22,52 @@
               <%= f.label :name %><br />
               <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control w-100" %>
             </div>
-
+            <br>
             <div class="field">
               <%= f.label :last_name %><br />
               <%= f.text_field :lastname, autofocus: true, autocomplete: "last name", class:"form-control w-100" %>
             </div>
-
+            <br>
             <div class="field">
               <%= f.label :birth_date %><br />
               <%= f.date_field :birthdate, autofocus: true, autocomplete: "birth date", class:"form-control w-100" %>
             </div>
-
+            <br>
             <div class="field">
               <%= f.label :profile_picture %><br />
               <%= f.file_field :image, class:"form-control w-100" %>
             </div>
           </div>
-
+          
           <div class="col">
             <div class="field">
               <%= f.label :email %><br />
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control w-100" %>
             </div>
-
+            <br>
             <div class="field">
               <%= f.label :New_password %><br />
               <%= f.password_field :password, placeholder:"Blank if you don't want to change", class:"form-control w-100" %>
             </div>
-
+            <br>
             <div class="field">
               <%= f.label :password_confirmation %><br />
               <%= f.password_field :password_confirmation, class:"form-control w-100" %>
             </div>
-
+            <br>
             <div class="field">
               <%= f.label :current_password %><br />
               <%= f.password_field :current_password, placeholder:"Need to confirm the changes", class:"form-control w-100" %>
             </div>
           </div>
-
+          
           <div class="row">
             <div class="actions"><br>
               <%= f.submit "Update", class:"btn btn-outline-dark w-100" %>
             </div>  
           </div>
         </div>
-        <br><br><br>
+        <br><br>
         <h3>Cancel my account</h3>
         
         <div>Unhappy?⠀<%= link_to "Cancel my account", deleteuser_path, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-outline-dark"%></div>

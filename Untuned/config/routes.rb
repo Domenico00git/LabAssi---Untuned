@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   get 'topics/index'
   get 'profiles/index'
 
-  #devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  
-  devise_for :users 
+
+  devise_for :users, controllers: { 
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 
   as:user do
     get 'deleteuser', to:'devise/registrations#destroy'

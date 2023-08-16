@@ -4,11 +4,11 @@
     <p style="color: white"><%= notice %></p>
         <% if user_signed_in? %>
             <h1 style="color:#1DB954;">
-                Hi <%= current_user.name%>, welcome back to Untuned
+                Hi <%= current_user.username%>, welcome back to Untuned
             </h1>
             <br>
             <p style="color:lightgrey">
-                Untuned is the perfect app for music enthusiasts who want to express their passion, discover new songs and artists, and connect with a global community of music lovers.<br>
+                Untuned is the perfect app for music enthusiasts who want to express their passion, discover new songs and artists, and connect with a global community of music lovers.
                 Whether you're a music critic, a live concert enthusiast, or simply a curious listener, Untuned will be your ultimate music guide!
             </p>
             <br><br><br>
@@ -21,10 +21,10 @@
             </h1>
             <br>
             <p style="color:lightgrey">
-                Untuned is the perfect app for music enthusiasts who want to express their passion, discover new songs and artists, and connect with a global community of music lovers.<br>
+                Untuned is the perfect app for music enthusiasts who want to express their passion, discover new songs and artists, and connect with a global community of music lovers.
                 Whether you're a music critic, a live concert enthusiast, or simply a curious listener, Untuned will be your ultimate music guide!
             </p>
-            <br><br>
+            <br><br><br>
             <%= link_to "Sign in", new_user_session_path, class:"btn w-100 btn-lg btn-outline-light"%>
             <br><br><br>
             <p style="color:lightgrey;">Don't have an account yet?</p>
