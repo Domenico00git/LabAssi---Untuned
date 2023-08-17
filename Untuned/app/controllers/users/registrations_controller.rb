@@ -4,15 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
-  def update_resource(resource, params)
-    if resource.provider == 'google_oauth2'
-      params.delete('current_password')
-      resource.password = params['password']
-      resource.update_without_password(params)
-    else
-      resource.update_with_password(params)
-    end
-  end
+  
 
   # GET /resource/sign_up
   #def new
@@ -31,8 +23,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   #PUT /resource
   def update
-      if current_user.update(account_update_params)
-        redirect_to root_path, notice: 'Your account has been updated'
+      if update_resource(@user, account_update_params)
+        sign_in_and_redirect @user, event: :authentication
+        flash[:notice] = 'Your account has been successfully updated'
       else
         render :edit
       end

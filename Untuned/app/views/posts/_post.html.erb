@@ -1,10 +1,14 @@
 <div id="<%= dom_id post %>">
   <p>
-    <% if post.user.image.attached? %>
-      <%= image_tag(post.user.image, style: "display: inline-block; height: 40px; width: 40px; object-fit:cover; border-radius: 50%;")%>
-    <% else %>
-      <img src="/assets/default_picture.jpg" display="inline-block" height="40px" width="40px" object-fit="cover" border-radius="50%">
-    <% end %>
+    <% if post.user.provider == 'google_oauth2'%>
+      <%= image_tag(post.user.avatar_url, style: "display: inline-block; height: 40px; width: 40px; object-fit:cover; border-radius: 50%;")%>
+    <%else%>
+      <% if post.user.image.attached? %>
+        <%= image_tag(post.user.image, style: "display: inline-block; height: 40px; width: 40px; object-fit:cover; border-radius: 50%;")%>
+      <% else %>
+        <img src="/assets/default_picture.jpg" display="inline-block" height="40px" width="40px" object-fit="cover" border-radius="50%">
+      <% end %>
+    <% end %>⠀
     <strong><%= link_to post.user.username, user_path(post.user.username)%></strong>⠀
     <strong><%= post.label %></strong>
     <% if user_signed_in? && current_user.following?(post) %>⠀<i class="bi bi-bell-fill"></i> <% end %>

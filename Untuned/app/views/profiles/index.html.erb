@@ -8,11 +8,15 @@
     <div class="container", style="color:lightgrey;">
         <% @users.each do |user| %>
             <h2 class="d-flex justify-content-center">
-                <% if user.image.attached? %>
-                    <%= image_tag(user.image, style: "display: inline-block; height: 50px; width: 50px; object-fit:cover; border-radius: 50%;")%>
-                <% else %>
-                    <img src="/assets/default_picture.jpg" display="inline-block" height="50px" width="50px" object-fit="cover" border-radius="50%">
-                <% end %>⠀
+                <% if user.provider == 'google_oauth2'%>
+                    <%= image_tag(user.avatar_url, style: "display: inline-block; height: 50px; width: 50px; object-fit:cover; border-radius: 50%;")%>⠀
+                <%else%>
+                    <% if user.image.attached? %>
+                        <%= image_tag(user.image, style: "display: inline-block; height: 50px; width: 50px; object-fit:cover; border-radius: 50%;")%>
+                    <% else %>
+                        <img src="/assets/default_picture.jpg" display="inline-block" height="50px" width="50px" object-fit="cover" border-radius="50%">
+                    <% end %>⠀
+                <% end %>
                 <%= link_to user.username, user_path(user.username), class:"btn w-50 btn-outline-light btn-lg"%>
             </h2>
         <% end %>
