@@ -7,17 +7,22 @@
         <%= link_to "< Back to Profile", :back, class:"btn btn-outline-dark" %>
       </div>
       <div class="col-md-8 d-flex justify-content-center">
-        <h2 class="d-flex justify-content-center">Edit Account</h2>
+        <h2 class="d-flex justify-content-center">Editing Account</h2>
       </div>
     </div>
-    <br>
     <div class="d-flex justify-content-center">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-
+        <div class="d-flex justify-content-center">
+          <% if @user.image.attached? %>
+            <%= image_tag(@user.image, style: "display: inline-block; height: 180px; width: 160px; object-fit:cover; border-radius: 50%;")%>
+          <% else %>
+            <img src="/assets/default_picture.jpg" display="inline-block" height="180px" width="130px" object-fit="cover" border-radius="50%">
+          <% end %>
+        </div>
+        <br>
         <div class="row d-flex justify-content-center">
           <div class="col">
-
             <div class="field">
               <%= f.label :name %><br />
               <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control w-100" %>
@@ -38,7 +43,6 @@
               <%= f.file_field :image, class:"form-control w-100" %>
             </div>
           </div>
-          
           <div class="col">
             <div class="field">
               <%= f.label :email %><br />
@@ -60,18 +64,14 @@
               <%= f.password_field :current_password, placeholder:"Need to confirm the changes", class:"form-control w-100" %>
             </div>
           </div>
-          
-          <div class="row">
-            <div class="actions"><br>
-              <%= f.submit "Update", class:"btn btn-outline-dark w-100" %>
-            </div>  
-          </div>
+          <div class="actions"><br>
+            <%= f.submit "Update", class:"btn btn-outline-dark w-100" %>
+          </div>  
         </div>
         <br><br>
         <h3>Cancel my account</h3>
-        
         <div>Unhappy?⠀<%= link_to "Cancel my account", deleteuser_path, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-outline-dark"%></div>
-
+        <br><br>
       <% end %>
     </div>
   </div>

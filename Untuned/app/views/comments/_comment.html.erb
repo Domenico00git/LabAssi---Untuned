@@ -17,11 +17,8 @@
 </div>
 <br>
 <div class="row">
-  <div class="col">
-    <div>
-      <br>
-      <%= comment.body %><br><br>
-    </div>
+  <div>
+    <%= comment.body %><br><br>
   </div>
 </div>
 <div class="row">
@@ -39,15 +36,15 @@
   <div class="col-md-5 d-flex justify-content-end">
     <% if user_signed_in? %>
       <% if current_user.voted_up_on? comment%>
-        <%= link_to "unlike", unlike_post_comment_path(comment.id), method: :delete, class:"btn btn-sm btn-primary"%>
+        <%= link_to "unlike", unlike_post_comment_path(comment.id), method: :delete, class:"btn btn-primary"%>
       <% else %>
-        <%= link_to "like", like_post_comment_path(comment.id), method: :post, class:"btn btn-sm btn-outline-primary"%>
+        <%= link_to "like", like_post_comment_path(comment.id), method: :post, class:"btn btn-outline-primary"%>
       <% end %>
     
       <% if current_user.voted_down_on? comment%>
-        <%= link_to "undislike", undislike_post_comment_path(comment.id), method: :delete, class:"btn btn-sm btn-primary"%>
+        <%= link_to "undislike", undislike_post_comment_path(comment.id), method: :delete, class:"btn btn-primary"%>
       <% else %>
-        <%= link_to "dislike", dislike_post_comment_path(comment.id), method: :post, class:"btn btn-sm btn-outline-primary"%>
+        <%= link_to "dislike", dislike_post_comment_path(comment.id), method: :post, class:"btn btn-outline-primary"%>
       <% end %>
     <% end %>
   </div>
@@ -56,14 +53,12 @@
   <div class="col-md-3 d-flex justify-content-start">
     <br>
     <% if current_user == comment.user %>
-      <%= link_to "Edit comment", edit_post_comment_path(@post, comment), class:"btn btn-sm btn-outline-light" %>
+      <%= link_to "Edit comment", edit_post_comment_path(@post, comment), class:"btn btn-link" %>
     <% end %>
 
     <% if current_user == comment.user || current_user == @post.user %>
-      <%= button_to "Delete comment", post_comment_path(@post, comment), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-sm btn-outline-danger"%>
+      <%= button_to "Delete comment", post_comment_path(@post, comment), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-link"%>
     <% end %>
-    <br>
-    <br>
   </div>
 </div>
 <hr>

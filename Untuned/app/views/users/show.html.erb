@@ -1,11 +1,17 @@
 <body style="background-color:#1DB954;">
     <div class="container"><br>
+
         <% if user_signed_in?%>
-            <% if @user.provider == 'google_oauth2'%>
+            <% if @user.username == current_user.username && @user.provider == 'google_oauth2'%>
+                <div class="col-md-12 d-flex justify-content-end">
+                    <button type="button" class="btn btn-dark" disabled>Edit my account</button>
+                </div>
             <% elsif @user.username == current_user.username%>
                 <div class="col-md-12 d-flex justify-content-end">
-                    <%= link_to "Edit account", edit_user_registration_path, class:"btn btn-dark"%>
+                    <%= link_to "Edit my account", edit_user_registration_path, class:"btn btn-dark"%>
                 </div>
+            <% else %>
+                <br>      
             <% end %>
         <% end %>
 
@@ -25,10 +31,10 @@
                 <div>
                     <% if user_signed_in?%>
                         <%if @user.username == current_user.username%>
-                            <br><br>
+                            <br>
                             <h6>My Profile</h6>
                         <% else %>
-                            <br><br><br>
+                            <br><br>
                         <%end%>
                     <% else %>
                         <br><br><br>

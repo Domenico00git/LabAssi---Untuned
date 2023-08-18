@@ -17,16 +17,18 @@ class User < ApplicationRecord
   acts_as_voter
 
   def self.from_omniauth(auth)
+
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.username = auth.info.name
       user.avatar_url = auth.info.image
-      #user.birthdate = auth.info.birthday
-      
+
       split = auth.info.name.split(" ")
       user.name = split[0]
       user.lastname = split[1]
+
+      user.skip_confirmation!
     end
   end
 

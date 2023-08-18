@@ -1,11 +1,19 @@
 <body style="background-color:black">
   <div class="container", style="color:lightgrey;">
     <p style="color: green"><%= notice %></p>
-
+    <br>
     <div class="row">
-      <h3 class="d-flex justify-content-center", style="color:#1DB954;">
-        <i class="bi bi-repeat">⠀</i><i class="bi bi-caret-left-fill"></i>⠀UNTUNED⠀<i class="bi bi-caret-right-fill"></i>⠀<i class="bi bi-shuffle"></i>
-      </h3>
+      <div class="col-md-2 d-flex justify-content-center">
+        <% if user_signed_in? %>
+          <%= link_to "NEW", new_post_path, class:"btn btn-lg btn-primary rounded-pill" %>
+        <%end%>
+      </div>
+      <div class="col-md-8 d-flex justify-content-center">
+        <h2 style="color:#1DB954;">
+          <i class="bi bi-repeat">⠀</i><i class="bi bi-caret-left-fill"></i>⠀UNTUNED⠀<i class="bi bi-caret-right-fill"></i>⠀<i class="bi bi-shuffle"></i><br>
+        </h2>
+      </div>
+      <div class="col-md-2 d-flex justify-content-center"></div>
     </div>
     <br>
     <div class="row">
@@ -18,7 +26,7 @@
         <%= form_with url: topics_index_path, method: :get do |form|%>
           <%= form.search_field :query, value: params[:query],
           placeholder: " Search by topic"%>
-          <%= form.submit "Search", class:"btn btn-outline-success btn-sm" %>
+          <%= form.submit "Search", class:"btn btn-outline-light btn-sm" %>
         <% end %>
       </div>
       <div class="col md-4 d-flex justify-content-end">
@@ -57,20 +65,9 @@
               <% end %>
             <% end %>
           </div>
-          
         </div>
-
       <% end %>
     </div>
-
-    <% if user_signed_in? %>
-      <div class="d-flex justify-content-center">
-        <div><br>
-          <%= link_to "New post", new_post_path, class:"btn btn-success btn-lg" %>
-        </div>
-        <br><br>
-      </div>
-    <%end%>
   </div>
 </body>
 

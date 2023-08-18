@@ -1,8 +1,8 @@
 <% if current_user%>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="badge rounded-pill bg-danger">
-                <%= @unread.count >= 9 ? "9+" : @unread.count %> <i class="bi bi-heart-fill"></i>
+            <span class="badge rounded-pill bg-primary">
+                <%= @unread.count >= 9 ? "9+" : @unread.count %>⠀<i class="bi bi-bell-fill"></i>
             </span>
         </a>
         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
