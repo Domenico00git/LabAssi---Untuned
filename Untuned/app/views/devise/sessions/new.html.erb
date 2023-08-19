@@ -1,9 +1,9 @@
-
-<body style="background-color:#1DB954;">
-  <div class="container"><br>
-    <p style="color: black"><%= notice %></p>
+<br>
+<body style="background-color:black;">
+  <div class="container", style="color:#1DB954;">
+    <p><%= notice %></p>
     <h2 class="d-flex justify-content-center">Login</h2>
-
+    <br>
     <div class="d-flex justify-content-center">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
@@ -22,10 +22,10 @@
             <%= f.label :remember_me %>
           </div>
         <% end %>
-        <br>
+        
         <div class="actions">
           <div class="d-flex justify-content-center">
-            <%= f.submit "Log in", class:"btn btn-outline-dark w-100" %>
+            <%= f.submit "Log in", class:"btn btn-outline-light w-100" %>
           </div>
         </div>
       <% end %>

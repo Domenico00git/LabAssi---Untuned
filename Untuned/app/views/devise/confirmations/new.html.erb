@@ -1,12 +1,12 @@
-<br><br>
-<body style="background-color:#1DB954;">
-  <h2 class="d-flex justify-content-center">Resend confirmation instructions</h2>
-
-  <div class="container">
+<br>
+<body style="background-color:black">
+  <div class="container", style="color:#1DB954;">
+    <h2 class="d-flex justify-content-center">Resend confirmation instructions</h2>
+  
     <div class="d-flex justify-content-center">
       <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-        <br><br>
+        <br>
         <div class="field">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class:"form-control w-100" %>
@@ -14,7 +14,7 @@
         <br>
 
         <div class="actions">
-          <%= f.submit "Resend confirmation instructions", class:"btn btn-outline-dark w-100" %>
+          <%= f.submit "Resend confirmation instructions", class:"btn btn-outline-light w-100" %>
         </div>
       <% end %>
     </div>

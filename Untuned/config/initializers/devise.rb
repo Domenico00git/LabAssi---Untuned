@@ -275,7 +275,13 @@ Devise.setup do |config|
     Rails.application.credentials.dig(:google, :google_client_id), 
     Rails.application.credentials.dig(:google, :google_client_secret)
   
-    
+  config.omniauth :spotify, 
+    Rails.application.credentials.dig(:spotify, :spotify_client_id), 
+    Rails.application.credentials.dig(:spotify, :spotify_client_secret), scope: %w(
+      playlist-read-private
+      user-read-private
+      user-read-email
+    ).join(' ')
 
   
 

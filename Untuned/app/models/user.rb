@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :confirmable, :omniauthable, omniauth_providers: [:google_oauth2]
+         :confirmable, :omniauthable, omniauth_providers: [:spotify]
          
   has_one_attached :image
   has_many :posts, dependent: :delete_all
@@ -21,9 +21,9 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
-      user.username = auth.info.name
+      user.username = auth.info.nickname
       user.avatar_url = auth.info.image
-
+      user.birthdate = auth.info.birthdate
       split = auth.info.name.split(" ")
       user.name = split[0]
       user.lastname = split[1]

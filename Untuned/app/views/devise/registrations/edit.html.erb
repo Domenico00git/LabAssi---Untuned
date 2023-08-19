@@ -1,10 +1,9 @@
-
-<body style="background-color:#1DB954;">
-  <div class="container">
-    <br>
+<br>
+<body style="background-color:black">
+  <div class="container", style="color:#1DB954;">
     <div class="row">
       <div class="col-md-2">
-        <%= link_to "< Back to Profile", :back, class:"btn btn-outline-dark" %>
+        <%= link_to "< Back to Profile", :back, class:"btn btn-outline-light" %>
       </div>
       <div class="col-md-8 d-flex justify-content-center">
         <h2 class="d-flex justify-content-center">Editing Account</h2>
@@ -17,7 +16,7 @@
           <% if @user.image.attached? %>
             <%= image_tag(@user.image, style: "display: inline-block; height: 180px; width: 160px; object-fit:cover; border-radius: 50%;")%>
           <% else %>
-            <img src="/assets/default_picture.jpg" display="inline-block" height="180px" width="130px" object-fit="cover" border-radius="50%">
+            <img src="/assets/default_picture.jpg" display="inline-block" height="180px" width="160px" object-fit="cover" border-radius="50%">
           <% end %>
         </div>
         <br>
@@ -65,12 +64,12 @@
             </div>
           </div>
           <div class="actions"><br>
-            <%= f.submit "Update", class:"btn btn-outline-dark w-100" %>
+            <%= f.submit "Update", class:"btn btn-outline-light w-100" %>
           </div>  
         </div>
         <br><br>
         <h3>Cancel my account</h3>
-        <div>Unhappy?⠀<%= link_to "Cancel my account", deleteuser_path, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-outline-dark"%></div>
+        <div>Unhappy?⠀<%= link_to "Cancel my account", deleteuser_path, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-outline-light"%></div>
         <br><br>
       <% end %>
     </div>

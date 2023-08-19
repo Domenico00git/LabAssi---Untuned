@@ -1,8 +1,8 @@
-<br><br>
-<body style="background-color:#1DB954;">
-  <h2 class="d-flex justify-content-center">Change your password</h2>
-
-  <div class="container">
+<br>
+<body style="background-color:black">
+  <div class="container", style="color:#1DB954;">
+    <h2 class="d-flex justify-content-center">Change your password</h2>
+    <br>
     <div class="d-flex justify-content-center">
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
@@ -24,7 +24,7 @@
         <br>
 
         <div class="actions">
-          <%= f.submit "Change my password" , class:"btn btn-outline-dark w-100"%>
+          <%= f.submit "Change my password" , class:"btn btn-outline-light w-100"%>
         </div>
       <% end %>
     </div>

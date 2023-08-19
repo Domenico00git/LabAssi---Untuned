@@ -1,33 +1,43 @@
 <body style="background-color:black">
     <img src="/assets/background.jpg" class="opacity-75" style="position: fixed; top: 10; left: 0; width: 100%; height: 100%; z-index: -1;">
-    <div class="container"><br>
-    <p style="color: white"><%= notice %></p>
+    <div class="container">
+        <br>
+        <p style="color:#1DB954;"><%= notice %></p>
         <% if user_signed_in? %>
-            <h1 style="color:#1DB954;">
+            <h1 class="d-flex justify-content-center", style="color:#1DB954;">
                 Hi <%= current_user.name%>, welcome back to Untuned
             </h1>
             <br>
-            <p style="color:lightgrey">
+            <h6 style="color:lightgrey">
                 Untuned is the perfect app for music enthusiasts who want to express their passion, discover new songs and artists, and connect with a global community of music lovers.
                 Whether you're a music critic, a live concert enthusiast, or simply a curious listener, Untuned will be your ultimate music guide!
-            </p>
-            <br><br><br>
+            </h6>
+            <br>
+            <br>
+            <br>
+            <br>
             <%= link_to "My Profile", user_path(current_user.username), class:"btn w-100 btn-lg btn-outline-light"%>
             <%= link_to "Go To Forum", posts_path, class:"btn w-100 btn-lg btn-outline-light"%>
 
         <% else %>
-            <h1 style="color:#1DB954;">
+            <h1 class="d-flex justify-content-center", style="color:#1DB954;">
                 Welcome to Untuned
             </h1>
             <br>
-            <p style="color:lightgrey">
+            <h6 style="color:lightgrey">
                 Untuned is the perfect app for music enthusiasts who want to express their passion, discover new songs and artists, and connect with a global community of music lovers.
                 Whether you're a music critic, a live concert enthusiast, or simply a curious listener, Untuned will be your ultimate music guide!
-            </p>
-            <br><br><br>
-            <%= link_to "Sign in", new_user_session_path, class:"btn w-100 btn-lg btn-outline-light"%>
-            <br><br><br>
-            <p style="color:lightgrey;">Don't have an account yet?</p>
+            </h6>
+            <br><br>
+            <h6 style="color:lightgrey">
+                Start now signing in with your Spotify account to show everyone what are you currently listening to and display the statistics about your favorite songs and artists!
+            </h6>
+            <br>
+            <%= link_to "Sign in here", new_user_session_path, class:"btn w-100 btn-lg btn-outline-light"%>
+            <br>
+            <br>
+            <br>
+            <h6 style="color:lightgrey;">Don't have an account yet?</h6>
             <%= link_to "Sign up here", new_user_registration_path, class:"btn w-100 btn-lg btn-outline-light"%>
             <%= link_to "Continue as guest", posts_path, class:"btn w-100 btn-lg btn-outline-light"%>
         <% end %>

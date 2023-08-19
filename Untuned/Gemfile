@@ -86,6 +86,7 @@ gem "ransack"
 gem "noticed", "~> 1.6"
 
 gem "omniauth"
+gem 'omniauth-spotify'
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 

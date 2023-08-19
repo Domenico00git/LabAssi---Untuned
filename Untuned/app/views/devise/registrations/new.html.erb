@@ -1,8 +1,8 @@
 
-<body style="background-color:#1DB954;">
-  <br><h2 class="d-flex justify-content-center">Sign up</h2><br>
-
-  <div class="container">
+<body style="background-color:black;">
+  <div class="container", style="color:#1DB954;">
+    <br><h2 class="d-flex justify-content-center">Sign up</h2><br>
+    
     <div class="d-flex justify-content-center">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
@@ -14,38 +14,33 @@
               <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control w-100" %>
             </div>
             <br>
-
             <div class="field">
               <%= f.label :last_name %><br />
               <%= f.text_field :lastname, autofocus: true, autocomplete: "last name", class:"form-control w-100" %>
             </div>
             <br>
-
             <div class="field">
               <%= f.label :birth_date %><br />
               <%= f.date_field :birthdate, autofocus: true, autocomplete: "birth date", class:"form-control w-100"  %>
             </div>
             <br>
-
-            <div class="field">
-              <%= f.label :username %><br />
-              <%= f.text_field :username, autofocus: true, autocomplete: "username", class:"form-control w-100" %>
-            </div>
-            <br>
-          </div>
-          <div class="col">
             <div class="field">
               <%= f.label :profile_picture %><br />
               <%= f.file_field :image, class:"form-control w-100"%>
             </div>
             <br>
-
+          </div>
+          <div class="col md-6">
+            <div class="field">
+              <%= f.label :username %><br />
+              <%= f.text_field :username, autofocus: true, autocomplete: "username", class:"form-control w-100" %>
+            </div>
+            <br>
             <div class="field">
               <%= f.label :email %><br />
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control w-100" %>
             </div>
             <br>
-
             <div class="field">
               <%= f.label :password %>
               <% if @minimum_password_length %>
@@ -62,10 +57,10 @@
             <br>
           </div>
         </div>
-        <br>
+        
         <div class="actions">
           <div class="d-flex justify-content-center">
-            <%= f.submit "Sign up", class:"btn btn-outline-dark w-100"%>
+            <%= f.submit "Sign up", class:"btn btn-outline-light w-100"%>
           </div>
         </div>
       <% end %>

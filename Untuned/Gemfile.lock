@@ -242,6 +242,8 @@ GEM
     omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
+    omniauth-spotify (0.0.13)
+      omniauth-oauth2 (~> 1.1)
     orm_adapter (0.5.0)
     popper_js (2.11.7)
     public_suffix (5.0.3)
@@ -371,6 +373,7 @@ DEPENDENCIES
   omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection (~> 1.0)
+  omniauth-spotify
   puma (~> 5.0)
   rails (~> 7.0.6)
   ransack

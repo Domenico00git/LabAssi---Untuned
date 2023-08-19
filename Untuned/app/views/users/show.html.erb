@@ -1,14 +1,14 @@
-<body style="background-color:#1DB954;">
-    <div class="container"><br>
+<body style="background-color:black">
+    <div class="container", style="color:lightgrey"><br>
 
         <% if user_signed_in?%>
-            <% if @user.username == current_user.username && @user.provider == 'google_oauth2'%>
+            <% if @user.username == current_user.username && (@user.provider == 'google_oauth2' || @user.provider == 'spotify') %>
                 <div class="col-md-12 d-flex justify-content-end">
-                    <button type="button" class="btn btn-dark" disabled>Edit my account</button>
+                    <button type="button" class="btn btn-success" disabled>Edit my account</button>
                 </div>
             <% elsif @user.username == current_user.username%>
                 <div class="col-md-12 d-flex justify-content-end">
-                    <%= link_to "Edit my account", edit_user_registration_path, class:"btn btn-dark"%>
+                    <%= link_to "Edit my account", edit_user_registration_path, class:"btn btn-success"%>
                 </div>
             <% else %>
                 <br>      
@@ -17,13 +17,13 @@
 
         <div class="row">
             <div class="col-md-2 d-flex justify-content-end">
-                <% if @user.provider == 'google_oauth2'%>
-                    <%= image_tag(@user.avatar_url, style: "display: inline-block; height: 200px; width: 180px; object-fit:cover; border-radius: 50%;")%>
+                <% if @user.provider == 'google_oauth2'|| @user.provider == 'spotify' %>
+                    <%= image_tag(@user.avatar_url, style: "display: inline-block; height: 180px; width: 180px; object-fit:cover; border-radius: 50%;")%>
                 <%else%>
                     <% if @user.image.attached? %>
-                        <%= image_tag(@user.image, style: "display: inline-block; height: 200px; width: 180px; object-fit:cover; border-radius: 50%;")%>
+                        <%= image_tag(@user.image, style: "display: inline-block; height: 180px; width: 180px; object-fit:cover; border-radius: 50%;")%>
                     <% else %>
-                        <img src="/assets/default_picture.jpg" display="inline-block" height="200px" width="180px" object-fit="cover" border-radius="50%">
+                        <img src="/assets/default_picture.jpg" display="inline-block" height="180px" width="180px" object-fit="cover" border-radius="50%">
                     <% end %>
                 <% end %>
             </div>
@@ -71,6 +71,7 @@
                 </div>
             </div>
         </div>
+        <hr>
     </div>
 </body>
        

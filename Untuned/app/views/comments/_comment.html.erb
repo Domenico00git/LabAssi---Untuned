@@ -1,7 +1,7 @@
 <br>
 <div clas="row">
   <div class="col d-flex justify-content-start">
-    <% if comment.user.provider == 'google_oauth2'%>
+    <% if comment.user.provider == 'google_oauth2' || comment.user.provider == 'spotify' %>
       <%= image_tag(comment.user.avatar_url, style: "display: inline-block; height: 40px; width: 40px; object-fit:cover; border-radius: 50%;")%>
     
     <%else%>            

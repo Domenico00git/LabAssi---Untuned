@@ -22,7 +22,7 @@ class CommentNotification < Noticed::Base
     @post = Post.find(params[:comment][:post_id])
     @comment = Comment.find(params[:comment][:id])
     @user = User.find(@comment.user_id)
-    "#{@user.username} commented on #{@post.label.truncate(10)}"
+    "#{@user.username} commented on #{@post.label.truncate(15)}"
   end
   #
   def url
