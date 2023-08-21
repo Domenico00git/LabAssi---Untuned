@@ -73,17 +73,17 @@
         </div>
         <hr>
         <% if user_signed_in? && @user.provider=="spotify"%>
-            <h4 class="d-flex justify-content-center" style="color:#1DB954;">Currently playing song</h4>
+            <h4 class="d-flex justify-content-center" style="color:#1DB954;">Currently playing song</h4><br>
             <div class="row">
                 <% if @currently_playing != {}%>
-                    <div class="col-md-2 d-flex justify-content-center">
-                        ⠀⠀⠀
+                    
+                    <div class="col-md-2 d-flex justify-content-center">⠀⠀⠀
                         <a href="<%= @currently_playing['item']['external_urls']['spotify'] %>" target="_blank">
-                            <img src="<%= @currently_playing['item']['album']['images'][0]['url'] %>", style="height:150px; width:140px;">
+                            <img src="<%= @currently_playing['item']['album']['images'][0]['url'] %>", style="height:180px; width:160px;">
                         </a>
                     </div>
-                    <div class="col-md-10">
-                        <h5>
+                    <div class="col-md-7">
+                        <h5><br>
                             Song:⠀<%= @currently_playing['item']['name'] %>
                             <br><br>
                             Album:⠀<%= @currently_playing['item']['album']['name'] %>
@@ -104,7 +104,40 @@
             </div>
             <br>
             <hr>
-        <% end %>  
+        <% end %> 
+        <% if user_signed_in? && @user.provider=="spotify"%>       
+            <div class="row">
+                <div class="col-md-6 ">
+                    <h3 class="d-flex justify-content-start", style="color:#1DB954;">Top 15 Songs</h3>
+                    <br>
+                    <% if @top_tracks != {} %>
+                        <ul>
+                            <% for i in 0..14 %>
+                                <%= i+1 %>.⠀<img src="<%= @top_tracks['items'][i]['album']['images'][0]['url'] %>", style="height:70px; width:60px;">⠀<%= @top_tracks['items'][i]['name']%><br><br>
+                            <% end %>
+                        </ul>
+                        
+                    <% else %>
+                        <p><%= @error %></p>
+                    <% end %>
+                </div>
+
+                <div class="col-md-6">
+                    <h3 class="d-flex justify-content-end", style="color:#1DB954;">Top 10 Artists</h3>
+                    <% if @top_artists != {} %>
+                        <div class="d-flex justify-content-center">
+                            <ul>
+                                <% for i in 0..9 %>
+                                    <%= i+1 %>.⠀<img src="<%= @top_artists['items'][i]['images'][0]['url'] %>", style="height:100px; width:90px; object-fit:cover; border-radius: 50%;">⠀<%= @top_artists['items'][i]['name']%><br><br>
+                                <% end %>
+                            </ul>
+                        </div>
+                    <% else %>
+                        <p><%= @error %></p>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
     </div>
 </body>
        

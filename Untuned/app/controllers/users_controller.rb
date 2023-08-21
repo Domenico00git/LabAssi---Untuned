@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   require 'rest-client'
   require 'json'
 
@@ -8,6 +9,8 @@ class UsersController < ApplicationController
 
     if @user.provider == "spotify"
       @currently_playing = currently_playing_info
+      @top_tracks = top_tracks_info
+      @top_artists = top_artists_info
     end
   end  
 
@@ -33,4 +36,33 @@ class UsersController < ApplicationController
       {}
     end
   end
+
+  def top_tracks_info
+    response = RestClient.get(
+      'https://api.spotify.com/v1/me/top/tracks?time_range=medium_term',
+      { Authorization: "Bearer #{@user.access_token}" }
+    )
+
+    begin
+      JSON.parse(response.body)
+    rescue JSON::ParserError => e
+      # In caso di errore nella lettura del JSON, restituisci un hash vuoto o un messaggio di errore
+      {}
+    end
+  end
+
+  def top_artists_info
+      response = RestClient.get(
+      "https://api.spotify.com/v1/me/top/artists?time_range=medium_term",
+      { Authorization: "Bearer #{@user.access_token}" }
+    )
+    
+    begin
+      JSON.parse(response.body)
+    rescue JSON::ParserError => e
+      # In caso di errore nella lettura del JSON, restituisci un hash vuoto o un messaggio di errore
+      {}
+    end
+  end
+
 end

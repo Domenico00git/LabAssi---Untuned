@@ -284,6 +284,7 @@ Devise.setup do |config|
       user-read-playback-state
       user-read-currently-playing
       user-top-read
+      user-library-read
     ).join(' ')
  
 
