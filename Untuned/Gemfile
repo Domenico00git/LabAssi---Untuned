@@ -75,19 +75,28 @@ gem 'bootstrap', '~> 5.3.0.alpha3'
 
 gem "devise", "~> 4.9"
 
+#gemme per permettere ad alcuni utenti di comportrsi come admin
 gem "activeadmin" , "~> 3.0.0"
 gem "inherited_resources", github: "activeadmin/inherited_resources"
 
+#gemme per seguire post e user
 gem "acts_as_follower", github: "tcocca/acts_as_follower"
 gem "acts_as_votable", "~> 0.10.0"
 
+#gemma per ricerca nel database di utenti e post
 gem "ransack"
 
+#gemma per notifiche commenti a post che utente segue
 gem "noticed", "~> 1.6"
 
+#gemme per autenticazione tramite Spotify/Google
 gem "omniauth"
+gem 'dotenv-rails'
 gem 'omniauth-spotify'
-gem "omniauth-google-oauth2"
+#gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 
+#gemme per utilizzare API Spotify
+gem "spotify"
+gem 'rest-client'
 

@@ -132,6 +132,10 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     execjs (2.8.1)
     faraday (2.7.10)
@@ -156,9 +160,13 @@ GEM
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
       llhttp-ffi (~> 0.4.0)
+    http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.1)
@@ -187,6 +195,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    libspotify (12.1.51.4-x86_64-linux)
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
@@ -201,6 +210,9 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mime-types (3.5.0)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2023.0808)
     mini_mime (1.1.2)
     minitest (5.18.1)
     msgpack (1.7.1)
@@ -214,6 +226,7 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
+    netrc (0.11.0)
     nio4r (2.5.9)
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
@@ -245,6 +258,7 @@ GEM
     omniauth-spotify (0.0.13)
       omniauth-oauth2 (~> 1.1)
     orm_adapter (0.5.0)
+    performer (1.0.1)
     popper_js (2.11.7)
     public_suffix (5.0.3)
     puma (5.6.6)
@@ -294,6 +308,11 @@ GEM
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rexml (3.2.5)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
@@ -312,6 +331,10 @@ GEM
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
+    spotify (12.6.0)
+      ffi (~> 1.0, >= 1.0.11)
+      libspotify (~> 12.1.51)
+      performer (~> 1.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -366,6 +389,8 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9)
+  dotenv-rails
+  httparty
   importmap-rails
   inherited_resources!
   jbuilder
@@ -377,7 +402,9 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.6)
   ransack
+  rest-client
   selenium-webdriver
+  spotify
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails

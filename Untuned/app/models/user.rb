@@ -27,13 +27,15 @@ class User < ApplicationRecord
       split = auth.info.name.split(" ")
       user.name = split[0]
       user.lastname = split[1]
+      user.access_token = auth['credentials']['token']
 
       user.skip_confirmation!
+      
     end
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["admin", "birthdate", "created_at", "email", "encrypted_password", "id", "lastname", "name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at", "username","image_attachment_id_eq", "image_attachment_blob_id_eq", "comments_id_eq", "votes_id_eq", "notifications_id_eq", "confirmation_token_cont", "confirmation_token_eq", "confirmation_token_start", "confirmation_token_end", "unconfirmed_email_cont", "unconfirmed_email_eq", "unconfirmed_email_start", "unconfirmed_email_end", "provider_cont", "provider_eq", "provider_start", "provider_end", "uid_cont", "uid_eq", "uid_start", "uid_end", "avatar_url_cont", "avatar_url_eq", "avatar_url_start", "avatar_url_end"]
+    ["admin", "birthdate", "created_at", "email", "encrypted_password", "id", "lastname", "name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at", "username","image_attachment_id_eq", "image_attachment_blob_id_eq", "comments_id_eq", "votes_id_eq", "notifications_id_eq", "confirmation_token", "unconfirmed_email", "provider", "uid", "avatar_url", "access_token"]
   end
   def self.ransackable_associations(auth_object = nil)
     ["followings", "follows", "posts"]

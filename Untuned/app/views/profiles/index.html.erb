@@ -8,7 +8,7 @@
     <div class="container", style="color:lightgrey;">
         <% @users.each do |user| %>
             <h2 class="d-flex justify-content-center">
-                <% if user.provider == 'google_oauth2'|| user.provider == 'spotify' %>
+                <% if (user.provider == 'google_oauth2' || user.provider == 'spotify') && user.avatar_url.present? %>
                     <%= image_tag(user.avatar_url, style: "display: inline-block; height: 50px; width: 50px; object-fit:cover; border-radius: 50%;")%>⠀
                 <%else%>
                     <% if user.image.attached? %>

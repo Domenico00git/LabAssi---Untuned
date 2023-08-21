@@ -17,13 +17,13 @@
 
         <div class="row">
             <div class="col-md-2 d-flex justify-content-end">
-                <% if current_user && (current_user.provider == 'google_oauth2' || current_user.provider == 'spotify') && current_user.avatar_url.present? %>
-                    <%= image_tag(current_user.avatar_url, style: "display: inline-block; height: 40px; width: 40px; object-fit: cover; border-radius: 50%;") %>
+                <% if (@user.provider == 'google_oauth2' || @user.provider == 'spotify') && @user.avatar_url.present? %>
+                    <%= image_tag(@user.avatar_url, style: "display: inline-block; height: 180px; width: 160px; object-fit: cover; border-radius: 50%;") %>
                 <%else%>
                     <% if @user.image.attached? %>
-                        <%= image_tag(@user.image, style: "display: inline-block; height: 180px; width: 180px; object-fit:cover; border-radius: 50%;")%>
+                        <%= image_tag(@user.image, style: "display: inline-block; height: 180px; width: 160px; object-fit:cover; border-radius: 50%;")%>
                     <% else %>
-                        <img src="/assets/default_picture.jpg" display="inline-block" height="180px" width="180px" object-fit="cover" border-radius="50%">
+                        <img src="/assets/default_picture.jpg" display="inline-block" height="180px" width="160px" object-fit="cover" border-radius="50%">
                     <% end %>
                 <% end %>
             </div>
@@ -32,7 +32,7 @@
                     <% if user_signed_in?%>
                         <%if @user.username == current_user.username%>
                             <br>
-                            <h6>My Profile</h6>
+                            <h5>My Profile</h5>
                         <% else %>
                             <br><br>
                         <%end%>
@@ -72,6 +72,39 @@
             </div>
         </div>
         <hr>
+        <% if user_signed_in? && @user.provider=="spotify"%>
+            <h4 class="d-flex justify-content-center" style="color:#1DB954;">Currently playing song</h4>
+            <div class="row">
+                <% if @currently_playing != {}%>
+                    <div class="col-md-2 d-flex justify-content-center">
+                        ⠀⠀⠀
+                        <a href="<%= @currently_playing['item']['external_urls']['spotify'] %>" target="_blank">
+                            <img src="<%= @currently_playing['item']['album']['images'][0]['url'] %>", style="height:150px; width:140px;">
+                        </a>
+                    </div>
+                    <div class="col-md-10">
+                        <h5>
+                            Song:⠀<%= @currently_playing['item']['name'] %>
+                            <br><br>
+                            Album:⠀<%= @currently_playing['item']['album']['name'] %>
+                            <br><br>
+                            Artist:⠀<%= @currently_playing['item']['artists'][0]['name']%>
+                            <br><br>
+                        </h5>
+                    </div>
+                <% else %>
+                    <h5 class="d-flex justify-content-center">
+                        No song currently playing
+                    </h5>
+                <% end %>
+
+                <% if @error %>
+                    <p>Error: <%= @error %></p>
+                <% end %>
+            </div>
+            <br>
+            <hr>
+        <% end %>  
     </div>
 </body>
        
