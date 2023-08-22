@@ -68,7 +68,7 @@ class UsersController < ApplicationController
 
   def following_artists_info
       response = RestClient.get(
-      "https://api.spotify.com/v1/me/following?type=artist",
+      "https://api.spotify.com/v1/me/following?type=artist&limit=50&limit=50",
       { Authorization: "Bearer #{@user.access_token}" }  
     )
 

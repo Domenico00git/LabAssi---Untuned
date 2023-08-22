@@ -14,9 +14,9 @@
         <%= render "devise/shared/error_messages", resource: resource %>
         <div class="d-flex justify-content-center">
           <% if @user.image.attached? %>
-            <%= image_tag(@user.image, style: "display: inline-block; height: 180px; width: 160px; object-fit:cover; border-radius: 50%;")%>
+            <%= image_tag(@user.image, style: "display: inline-block; height: 180px; width: 170px; object-fit:cover; border-radius: 50%;")%>
           <% else %>
-            <img src="/assets/default_picture.jpg" display="inline-block" height="180px" width="160px" object-fit="cover" border-radius="50%">
+            <img src="/assets/default_picture.jpg" display="inline-block" height="180px" width="170px" object-fit="cover" border-radius="50%">
           <% end %>
         </div>
         <br>
