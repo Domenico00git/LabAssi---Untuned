@@ -76,7 +76,7 @@
         <% if user_signed_in? && @user.provider=="spotify"%>
             <h4 class="d-flex justify-content-center" style="color:#1DB954;">Currently playing song</h4>
             <div class="row">
-                <% if @currently_playing != {}%>
+                <% if @currently_playing && @currently_playing != {}%>
                     
                     <div class="col-md-2 d-flex justify-content-center">⠀⠀⠀
                         <a href="<%= @currently_playing['item']['external_urls']['spotify'] %>" target="_blank">
@@ -90,7 +90,6 @@
                             Album:⠀<%= @currently_playing['item']['album']['name'] %>
                             <br><br>
                             Artist:⠀<%= @currently_playing['item']['artists'][0]['name']%>
-                            <br><br>
                         </h5>
                     </div>
                 <% else %>
@@ -106,13 +105,13 @@
             <br>
             <hr>
         <% end %> 
-        <br>
+
         <% if user_signed_in? && @user.provider=="spotify"%>       
             <div class="row">
                 <div class="col-md-7">
                     <h3 class="d-flex justify-content-center", style="color:#1DB954;">Top 15 Songs</h3>
                     <br>
-                    <% if @top_tracks != {} %>
+                    <% if @top_tracks && @top_tracks != {} %>
                         <ul>
                             <% for i in 0..14 %>
                                 <h5>
@@ -131,13 +130,14 @@
                
                 <div class="col-md-5">
                     <h3 class="d-flex justify-content-center", style="color:#1DB954;">Top 10 Artists</h3><br>
-                    <% if @top_artists != {} %>
+                    <% if @top_artists && @top_artists != {} %>
                         <div class="d-flex justify-content-center">
                             <ul>
                                 <% for i in 0..9 %>
                                     <h5>
                                         <%= i+1 %>.⠀
                                         <a href="<%= @top_artists['items'][i]['external_urls']['spotify'] %>" target="_blank"><img src="<%= @top_artists['items'][i]['images'][0]['url'] %>", style="height:140px; width:120px; object-fit:cover; border-radius: 50%;"></a>⠀
+                                        
                                         <%= @top_artists['items'][i]['name']%><br><br>
                                     </h5>
                                 <% end %>
@@ -148,6 +148,20 @@
                     <% end %>
                 </div>
             </div>
+        <% end %>
+
+        <% if user_signed_in? && @user.provider=="spotify"%> 
+            <h4 class="d-flex justify-content-center" style="color:#1DB954;">Following Artists</h4>
+            <br><br>
+            <% if @following_artists && @following_artists != {} %>
+                <% @total = @following_artists['artists']['total'] %>
+
+                <% for i in 0..(@total-1) %>
+                    <a href="<%= @following_artists['artists']['items'][i]['external_urls']['spotify'] %>" target="_blank"><img src="<%= @following_artists['artists']['items'][i]['images'][0]['url'] %>", style="height:120px; width:100px; object-fit:cover; border-radius: 50%;"></a>⠀
+                <% end %>
+            <% end %>
+            <br><br>
+            <hr>
         <% end %>
     </div>
 </body>
