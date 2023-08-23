@@ -170,6 +170,42 @@
                         </div>
                     <% end %>
                 <% end %>
+                <h1><hr><br></h1>
+            <% end %>
+        <% end %>
+        <br>
+        
+        <% if user_signed_in? && @user.provider=="spotify"%> 
+            <h3 class="d-flex justify-content-center" style="color:#1DB954;">Saved Albums</h3>
+
+            <% if @album_library && @album_library != {} %>
+                <h1><br /></h1>
+                <% @total = @album_library['total'] %>
+
+                <% (0..@total-1).each_with_index do |i, index| %>
+                    <% if index % 6 == 0 %>
+                        <div class="row">
+                    <% end %>
+    
+                    <div class="col-md-2">
+                        <div class="element">
+                            <%if i>49%><%break%><%end%>
+                            
+                            <% spotify_album_url = "https://open.spotify.com/album/#{@album_library['items'][i]['album']['id']}"%>
+                            <a href="<%= spotify_album_url %>" target="_blank">
+                                <img src="<%= @album_library['items'][i]['album']['images'][1]['url']%>", style="height:120px; width:110px;" >
+                            </a>
+                            <p class="d-flex justify-content-start">        
+                                <%= @album_library['items'][i]['album']['name'].truncate(15) %><br>
+                                <%= @album_library['items'][i]['album']['artists'][0]['name'].truncate(15) %>
+                            </p>
+                        </div>
+                    </div>
+    
+                    <% if (index + 1) % 6 == 0 || index == 49 %> 
+                        </div>
+                    <% end %>
+                <% end %>
                 <h1><hr></h1>
             <% end %>
         <% end %>
@@ -177,3 +213,4 @@
 </body>
        
        
+

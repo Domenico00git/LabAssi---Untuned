@@ -12,6 +12,7 @@ class UsersController < ApplicationController
       @top_tracks = top_tracks_info
       @top_artists = top_artists_info
       @following_artists = following_artists_info
+      @album_library = album_library_info
     end
   end  
 
@@ -66,7 +67,7 @@ class UsersController < ApplicationController
 
   def following_artists_info
       response = RestClient.get(
-      "https://api.spotify.com/v1/me/following?type=artist&limit=50&limit=50",
+      "https://api.spotify.com/v1/me/following?type=artist&limit=50",
       { Authorization: "Bearer #{@user.access_token}" }  
     )
 
@@ -77,5 +78,20 @@ class UsersController < ApplicationController
       {}
     end
   end
+
+
+  def album_library_info
+      response = RestClient.get(
+      "https://api.spotify.com/v1/me/albums?limit=50",
+      { Authorization: "Bearer #{@user.access_token}" }
+    )
+    
+    begin
+      JSON.parse(response.body)
+    rescue JSON::ParserError => e
+      # In caso di errore nella lettura del JSON, restituisci un hash vuoto o un messaggio di errore
+      {}
+    end
+  end 
 
 end
