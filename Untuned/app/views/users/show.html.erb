@@ -2,11 +2,7 @@
     <div class="container", style="color:lightgrey"><br>
 
         <% if user_signed_in?%>
-            <% if @user.username == current_user.username && (@user.provider == 'google_oauth2' || @user.provider == 'spotify') %>
-                <div class="col-md-12 d-flex justify-content-end">
-                    <button type="button" class="btn btn-success" disabled>Edit my account</button>
-                </div>
-            <% elsif @user.username == current_user.username%>
+            <% if @user.username == current_user.username%>
                 <div class="col-md-12 d-flex justify-content-end">
                     <%= link_to "Edit my account", edit_user_registration_path, class:"btn btn-success"%>
                 </div>
@@ -17,7 +13,7 @@
 
         <div class="row">
             <div class="col-md-2 d-flex justify-content-end">
-                <% if (@user.provider == 'google_oauth2' || @user.provider == 'spotify') && @user.avatar_url.present? %>
+                <% if @user.provider == 'spotify' && @user.avatar_url.present? %>
                     <%= image_tag(@user.avatar_url, style: "display: inline-block; height: 180px; width: 170px; object-fit: cover; border-radius: 50%;") %>
                 <%else%>
                     <% if @user.image.attached? %>

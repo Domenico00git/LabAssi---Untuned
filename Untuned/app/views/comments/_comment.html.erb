@@ -2,7 +2,7 @@
 <div clas="row">
   <div class="col d-flex justify-content-start">
     <p>
-      <% if (comment.user.provider == 'google_oauth2' || comment.user.provider == 'spotify') && comment.user.avatar_url.present? %>
+      <% if comment.user.provider == 'spotify' && comment.user.avatar_url.present? %>
         <%= image_tag(comment.user.avatar_url, style: "display: inline-block; height: 50px; width: 50px; object-fit:cover; border-radius: 50%;")%>
     
       <%else%>            
@@ -11,12 +11,11 @@
         <% else %>
           <img src="/assets/default_picture.jpg" display="inline-block" height="50px" width="50px" object-fit="cover" border-radius="50%">
         <% end %>
-      <% end %>⠀
+      <% end %>
       <strong><%= link_to comment.user.username, user_path(comment.user.username)%></strong> 
     </p>  
   </div>
 </div>
-<br>
 <div class="row">
   <div>
     <%= comment.body %><br><br>

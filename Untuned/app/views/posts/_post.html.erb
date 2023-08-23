@@ -1,6 +1,6 @@
 <div id="<%= dom_id post %>">
   <p>
-    <% if (post.user.provider == 'google_oauth2'|| post.user.provider == 'spotify') && post.user.avatar_url.present? %>
+    <% if post.user.provider == 'spotify' && post.user.avatar_url.present? %>
       <%= image_tag(post.user.avatar_url, style: "display: inline-block; height: 50px; width: 50px; object-fit:cover; border-radius: 50%;")%>
     <%else%>
       <% if post.user.image.attached? %>
@@ -8,7 +8,7 @@
       <% else %>
         <img src="/assets/default_picture.jpg" display="inline-block" height="50px" width="50px" object-fit="cover" border-radius="50%">
       <% end %>
-    <% end %>⠀
+    <% end %>
     <strong><%= link_to post.user.username, user_path(post.user.username)%></strong>⠀
     <strong><%= post.label %></strong>
     <% if user_signed_in? && current_user.following?(post) %>⠀<i class="bi bi-bell-fill"></i> <% end %>

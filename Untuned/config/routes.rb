@@ -10,11 +10,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  as:user do
-    get 'deleteuser', to:'devise/registrations#destroy'
-  end
-
-
   resources :users, only: :show, param: :username do
     member do
       get 'follow', to: 'follows#create1'

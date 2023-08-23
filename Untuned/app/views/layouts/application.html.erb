@@ -60,7 +60,7 @@
               <%= form_with url: profiles_index_path, method: :get do |form|%>
                 <%= form.search_field :query, value: params[:query],
                 placeholder: "Search user"%>
-                <%= form.submit "Search", class:"btn btn-outline-light btn-sm" %>
+                <%= form.submit "Search", class:"btn btn-outline-success btn-sm" %>
               <% end %>
             </li>
           </ul>
@@ -77,7 +77,7 @@
               <li class="nav-item">
                 <%= button_to "Log out", destroy_user_session_path, method: :delete, class:"nav-link"%>
               </li>⠀
-              <% if current_user && (current_user.provider == 'google_oauth2' || current_user.provider == 'spotify') && current_user.avatar_url.present? %>
+              <% if current_user && current_user.provider == 'spotify' && current_user.avatar_url.present? %>
                 <%= image_tag(current_user.avatar_url, style: "display: inline-block; height: 40px; width: 40px; object-fit: cover; border-radius: 50%;") %>
               <%else%>
                 <% if current_user.image.attached? %>

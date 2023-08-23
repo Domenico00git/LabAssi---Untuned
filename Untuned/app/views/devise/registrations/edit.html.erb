@@ -9,70 +9,88 @@
         <h2 class="d-flex justify-content-center">Editing Account</h2>
       </div>
     </div>
+    <br>
     <div class="d-flex justify-content-center">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
         <div class="d-flex justify-content-center">
-          <% if @user.image.attached? %>
-            <%= image_tag(@user.image, style: "display: inline-block; height: 180px; width: 170px; object-fit:cover; border-radius: 50%;")%>
+
+          <% if @user.provider == 'spotify' && @user.avatar_url.present? %>
+            <%= image_tag(@user.avatar_url, style: "display: inline-block; height: 180px; width: 170px; object-fit: cover; border-radius: 50%;") %>
           <% else %>
-            <img src="/assets/default_picture.jpg" display="inline-block" height="180px" width="170px" object-fit="cover" border-radius="50%">
+            <% if @user.image.attached? %>
+              <%= image_tag(@user.image, style: "display: inline-block; height: 180px; width: 170px; object-fit:cover; border-radius: 50%;")%>
+            <% else %>
+              <img src="/assets/default_picture.jpg" display="inline-block" height="180px" width="170px" object-fit="cover" border-radius="50%">
+            <% end %>
           <% end %>
         </div>
         <br>
         <div class="row d-flex justify-content-center">
-          <div class="col">
-            <div class="field">
-              <%= f.label :name %><br />
-              <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control w-100" %>
+          <% if @user.provider != "spotify"%>
+            <div class="col">
+              <div class="field">
+                <%= f.label :name %><br />
+                <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control w-100" %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :last_name %><br />
+                <%= f.text_field :lastname, autofocus: true, autocomplete: "last name", class:"form-control w-100" %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :birth_date %><br />
+                <%= f.date_field :birthdate, autofocus: true, autocomplete: "birth date", class:"form-control w-100" %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :profile_picture %><br />
+                <%= f.file_field :image, class:"form-control w-100" %>
+              </div>
             </div>
-            <br>
-            <div class="field">
-              <%= f.label :last_name %><br />
-              <%= f.text_field :lastname, autofocus: true, autocomplete: "last name", class:"form-control w-100" %>
+            <div class="col">
+              <div class="field">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control w-100" %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :New_password %><br />
+                <%= f.password_field :password, placeholder:"Blank if you don't want to change", class:"form-control w-100" %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, class:"form-control w-100" %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :current_password %><br />
+                <%= f.password_field :current_password, placeholder:"Need to confirm the changes", class:"form-control w-100" %>
+              </div>
             </div>
-            <br>
-            <div class="field">
-              <%= f.label :birth_date %><br />
-              <%= f.date_field :birthdate, autofocus: true, autocomplete: "birth date", class:"form-control w-100" %>
+            <div class="actions"><br>
+              <%= f.submit "Update", class:"btn btn-outline-light w-100" %>
             </div>
-            <br>
-            <div class="field">
-              <%= f.label :profile_picture %><br />
-              <%= f.file_field :image, class:"form-control w-100" %>
+          <% else %>
+            <div class="d-flex justify-content-center">
+              <h6 style="color:white">
+                <br>
+                You cannot change your avatar or your data as they are derived from your Spotify account. <br>
+                Please change them on Spotify if you wish.
+              </h6>
             </div>
-          </div>
-          <div class="col">
-            <div class="field">
-              <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control w-100" %>
-            </div>
-            <br>
-            <div class="field">
-              <%= f.label :New_password %><br />
-              <%= f.password_field :password, placeholder:"Blank if you don't want to change", class:"form-control w-100" %>
-            </div>
-            <br>
-            <div class="field">
-              <%= f.label :password_confirmation %><br />
-              <%= f.password_field :password_confirmation, class:"form-control w-100" %>
-            </div>
-            <br>
-            <div class="field">
-              <%= f.label :current_password %><br />
-              <%= f.password_field :current_password, placeholder:"Need to confirm the changes", class:"form-control w-100" %>
-            </div>
-          </div>
-          <div class="actions"><br>
-            <%= f.submit "Update", class:"btn btn-outline-light w-100" %>
-          </div>  
+          <% end %>
         </div>
-        <br><br>
-        <h3>Cancel my account</h3>
-        <div>Unhappy?⠀<%= link_to "Cancel my account", deleteuser_path, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-outline-light"%></div>
         <br><br>
       <% end %>
     </div>
+      
+    <h2 class="d-flex justify-content-center">Cancel my account</h2>
+      <div class="d-flex justify-content-center">
+        Unhappy?⠀<%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-light" %>
+      </div>
   </div>
 </body>
     
