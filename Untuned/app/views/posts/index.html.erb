@@ -10,7 +10,7 @@
       </div>
       <div class="col-md-8 d-flex justify-content-center">
         <h2 style="color:#1DB954;">
-          <i class="bi bi-repeat">⠀</i><i class="bi bi-caret-left-fill"></i>⠀UNTUNED⠀<i class="bi bi-caret-right-fill"></i>⠀<i class="bi bi-shuffle"></i><br>
+          <i class="bi bi-repeat">⠀</i><i class="bi bi-caret-left-fill"></i>⠀Untuned⠀<i class="bi bi-caret-right-fill"></i>⠀<i class="bi bi-shuffle"></i><br>
         </h2>
       </div>
       <div class="col-md-2 d-flex justify-content-center"></div>
@@ -26,7 +26,7 @@
         <%= form_with url: topics_index_path, method: :get do |form|%>
           <%= form.search_field :query, value: params[:query],
           placeholder: " Search by topic" %>
-          <%= form.submit "Search", class:"btn btn-sm btn-outline-light" %>
+          <%= form.submit "Search", class:"btn btn-sm btn-outline-success" %>
         <% end %>
       </div>
       <div class="col md-4 d-flex justify-content-end">
@@ -35,7 +35,7 @@
     </div>
     <div id="posts">
       <% @posts.reverse.each do |post| %>
-        <hr>
+        <hr style="color:#1DB954;">
         <%= render post %>
 
         <div class="row">
