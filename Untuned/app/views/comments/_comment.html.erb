@@ -3,13 +3,13 @@
   <div class="col d-flex justify-content-start">
     <p>
       <% if comment.user.provider == 'spotify' && comment.user.avatar_url.present? %>
-        <%= image_tag(comment.user.avatar_url, style: "display: inline-block; height: 50px; width: 50px; object-fit:cover; border-radius: 50%;")%>
+        <%= image_tag(comment.user.avatar_url, style: "display: inline-block; height: 40px; width: 40px; object-fit:cover; border-radius: 50%;")%>
     
       <%else%>            
         <% if comment.user.image.attached? %>
-          <%= image_tag(comment.user.image, style: "display: inline-block; height: 50px; width: 50px; object-fit:cover; border-radius: 50%;")%>
+          <%= image_tag(comment.user.image, style: "display: inline-block; height: 40px; width: 40px; object-fit:cover; border-radius: 50%;")%>
         <% else %>
-          <img src="/assets/default_picture.jpg" display="inline-block" height="50px" width="50px" object-fit="cover" border-radius="50%">
+          <img src="/assets/default_picture.jpg" display="inline-block" height="40px" width="40px" object-fit="cover" border-radius="50%">
         <% end %>
       <% end %>
       <strong><%= link_to comment.user.username, user_path(comment.user.username)%></strong> 

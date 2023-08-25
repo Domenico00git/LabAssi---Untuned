@@ -1,12 +1,12 @@
 <div id="<%= dom_id post %>">
   <p>
     <% if post.user.provider == 'spotify' && post.user.avatar_url.present? %>
-      <%= image_tag(post.user.avatar_url, style: "display: inline-block; height: 50px; width: 50px; object-fit:cover; border-radius: 50%;")%>
+      <%= image_tag(post.user.avatar_url, style: "display: inline-block; height: 40px; width: 40px; object-fit:cover; border-radius: 50%;")%>
     <%else%>
       <% if post.user.image.attached? %>
-        <%= image_tag(post.user.image, style: "display: inline-block; height: 50px; width: 50px; object-fit:cover; border-radius: 50%;")%>
+        <%= image_tag(post.user.image, style: "display: inline-block; height: 40px; width: 40px; object-fit:cover; border-radius: 50%;")%>
       <% else %>
-        <img src="/assets/default_picture.jpg" display="inline-block" height="50px" width="50px" object-fit="cover" border-radius="50%">
+        <img src="/assets/default_picture.jpg" display="inline-block" height="40px" width="40px" object-fit="cover" border-radius="50%">
       <% end %>
     <% end %>
     <strong><%= link_to post.user.username, user_path(post.user.username)%></strong>⠀
