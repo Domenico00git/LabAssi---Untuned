@@ -3,13 +3,9 @@
 one:
   user: one
   content: MyText
-  like: 1
-  dislike: 1
   label: MyString
 
 two:
   user: two
   content: MyText
-  like: 1
-  dislike: 1
   label: MyString
