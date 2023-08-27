@@ -39,7 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_135203) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  
   create_table "comments", force: :cascade do |t|
     t.text "body", null: false
     t.integer "post_id", null: false
@@ -67,7 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_135203) do
   create_table "notifications", force: :cascade do |t|
     t.string "recipient_type", null: false
     t.integer "recipient_id", null: false
-    t.string "type"
+    t.string "type", null: false
     t.json "params"
     t.datetime "read_at"
     t.datetime "created_at", null: false

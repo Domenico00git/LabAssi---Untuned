@@ -64,4 +64,6 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  config.active_support.deprecation = :silence #per silenziare i messaggi deprecazione
 end

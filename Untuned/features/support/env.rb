@@ -5,7 +5,17 @@
 # files.
 
 require 'cucumber/rails'
+require 'database_cleaner'
 
+DatabaseCleaner.strategy = :transaction
+
+Before do
+  DatabaseCleaner.start
+end
+
+After do
+  DatabaseCleaner.clean
+end
 # frozen_string_literal: true
 
 # Capybara defaults to CSS3 selectors rather than XPath.
@@ -56,5 +66,5 @@ ActionController::Base.allow_rescue = false
 # Possible values are :truncation and :transaction
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
-Cucumber::Rails::Database.javascript_strategy = :truncation
 
+Cucumber::Rails::Database.javascript_strategy = :truncation
