@@ -5,8 +5,10 @@ class TopicsController < ApplicationController
   end
 
   def topics
-    query = Post.ransack(label_cont: search_query)
-    @topics = query.result(distince: true)
+    query1 = Post.ransack(label_cont: search_query)
+    query2 = Post.ransack(content_cont: search_query)
+    @topics = (query1.result(distince: true) + query2.result(distince: true)).uniq
+
   end
 
   def search_query
