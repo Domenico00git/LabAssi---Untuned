@@ -30,7 +30,7 @@
       <div class="col-md-4 d-flex justify-content-start">
         <% if user_signed_in? && (@post.user == current_user) %>
           <%= link_to "Edit post", edit_post_path(@post), class:"btn btn-outline-light" %>
-          <%= button_to "Delete post", @post, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-outline-danger" %>
+          <%= button_to "Delete post", @post, data: {  }, method: :delete, class:"btn btn-outline-danger" %>
         <% end %>
       </div>
       <div class="col-md-4 d-flex justify-content-center">
