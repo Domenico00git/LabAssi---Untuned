@@ -1,4 +1,4 @@
-Feature: User sign up, add a post, and add a comment
+Feature: User sign up, add a post and add a comment
 
   Scenario: User signs up and then signs in
     Given there is a new user on the sign-up page

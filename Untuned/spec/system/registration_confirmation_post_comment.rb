@@ -13,9 +13,9 @@ RSpec.describe "User registration, confirmation via email, post creation", type:
         sleep 1
         find('.field input[type="date"]').set('26/07/2000')
         sleep 1
-        find('.field input[type="text"][id="username"]').set('example_username')
+        find('.field input[type="text"][id="username"]').set('username_example')
         sleep 1
-        find('.field input[type="email"]').set('user@example.com')
+        find('.field input[type="email"]').set('user_example@gmail.com')
         sleep 1
         find('.field input[type="password"][id="password"]').set('password')
         sleep 1
@@ -43,7 +43,7 @@ RSpec.describe "User registration, confirmation via email, post creation", type:
         # LOGIN NUOVO UTENTE
         visit new_user_session_path
         expect(User.exists?(email: "user@example.com")).to be true
-        find('.field input[type="email"]').set('user@example.com')
+        find('.field input[type="email"]').set('user_example@gmail.com')
         find('.field input[type="password"]').set('password')
         click_button('Log in')
         expect(page).to have_content("Signed in successfully.")
