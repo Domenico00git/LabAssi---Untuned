@@ -31,12 +31,12 @@
             <div class="col">
               <div class="field">
                 <%= f.label :name %><br />
-                <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control w-100" %>
+                <%= f.text_field :name, id:"name", autofocus: true, autocomplete: "name", class:"form-control w-100" %>
               </div>
               <br>
               <div class="field">
                 <%= f.label :last_name %><br />
-                <%= f.text_field :lastname, autofocus: true, autocomplete: "last name", class:"form-control w-100" %>
+                <%= f.text_field :lastname, id:"lastname", autofocus: true, autocomplete: "last name", class:"form-control w-100" %>
               </div>
               <br>
               <div class="field">
@@ -46,7 +46,7 @@
               <br>
               <div class="field">
                 <%= f.label :profile_picture %><br />
-                <%= f.file_field :image, class:"form-control w-100" %>
+                <%= f.file_field :image, id:"image", class:"form-control w-100" %>
               </div>
             </div>
             <div class="col">
@@ -57,17 +57,17 @@
               <br>
               <div class="field">
                 <%= f.label :New_password %><br />
-                <%= f.password_field :password, placeholder:"Blank if you don't want to change", class:"form-control w-100" %>
+                <%= f.password_field :password, id:"password", placeholder:"Blank if you don't want to change", class:"form-control w-100" %>
               </div>
               <br>
               <div class="field">
                 <%= f.label :password_confirmation %><br />
-                <%= f.password_field :password_confirmation, class:"form-control w-100" %>
+                <%= f.password_field :password_confirmation, id:"password_confirmation", class:"form-control w-100" %>
               </div>
               <br>
               <div class="field">
                 <%= f.label :current_password %><br />
-                <%= f.password_field :current_password, placeholder:"Need to confirm the changes", class:"form-control w-100" %>
+                <%= f.password_field :current_password, id:"current_password", placeholder:"Need to confirm the changes", class:"form-control w-100" %>
               </div>
             </div>
             <div class="actions"><br>
