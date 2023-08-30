@@ -14,8 +14,17 @@ class Comment < ApplicationRecord
   private
 
   def notify_recipient
-    CommentNotification.with(comment: self, post: post).deliver_later(post.user)
-    CommentNotification.with(comment: self, post: post).deliver_later(post.followers)
+    # Crea oggetto CommentNotification con i parametri passati e lo "consegna" all'autore del post se non è autore del commento
+    if post.user_id != self.user_id
+      CommentNotification.with(comment: self, post: post).deliver_later(post.user)
+    end
+
+    # Crea oggetto CommentNotification con i parametri passati e lo "consegna" ai follower del post tranne all'autore del commento se anche questo segue il post
+    post.followers.each do |follower|
+      if follower.id != self.user_id
+        CommentNotification.with(comment: self, post: post).deliver_later(follower)
+      end
+    end
   end
 
   def cleanup_notifications

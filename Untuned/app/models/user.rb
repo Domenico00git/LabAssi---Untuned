@@ -6,8 +6,8 @@ class User < ApplicationRecord
          :confirmable, :omniauthable, omniauth_providers: [:spotify]
          
   has_one_attached :image
-  has_many :posts, dependent: :delete_all
-  has_many :comments, dependent: :delete_all
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
  
   validates :username, presence: true, uniqueness: true, length: { minimum: 5}
