@@ -92,7 +92,7 @@ gem "ransack"
 #gemma per notifiche commenti a post che utente segue
 gem "noticed", "~> 1.6"
 
-#gemme per autenticazione tramite Spotify/Google
+#gemme per autenticazione tramite Spotify
 gem "omniauth"
 gem 'dotenv-rails'
 gem 'omniauth-spotify'
