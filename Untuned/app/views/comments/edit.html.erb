@@ -14,7 +14,7 @@
         </div>
         <br><br>
         <%= form_for([@post, @comment]) do |f|%>
-            <%= f.text_area :body, class:"form-control", rows:"10"%>
+            <%= f.text_area :body, class:"form-control", rows:"15"%>
             <%= f.submit 'Submit Comment', class:"btn btn-outline-success w-100"%>
         <% end %>
     </div>

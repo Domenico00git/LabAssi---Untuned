@@ -14,12 +14,12 @@
         <div class="row">
             <div class="col-md-2 d-flex justify-content-end">
                 <% if @user.provider == 'spotify' && @user.avatar_url.present? %>
-                    <%= image_tag(@user.avatar_url, style: "display: inline-block; height: 180px; width: 170px; object-fit: cover; border-radius: 50%;") %>
+                    <%= image_tag(@user.avatar_url, style: "display: inline-block; height: 200px; width: 180px; object-fit: cover; border-radius: 50%;") %>
                 <%else%>
                     <% if @user.image.attached? %>
-                        <%= image_tag(@user.image, style: "display: inline-block; height: 180px; width: 170px; object-fit:cover; border-radius: 50%;")%>
+                        <%= image_tag(@user.image, style: "display: inline-block; height: 200px; width: 180px; object-fit:cover; border-radius: 50%;")%>
                     <% else %>
-                        <img src="/assets/default_picture.jpg" display="inline-block" height="180px" width="170px" object-fit="cover" border-radius="50%">
+                        <img src="/assets/default_picture.jpg" display="inline-block" height="200px" width="180px" object-fit="cover" border-radius="50%">
                     <% end %>
                 <% end %>
             </div>
@@ -76,11 +76,11 @@
                     
                     <div class="col-md-2 d-flex justify-content-center">⠀⠀⠀
                         <a href="<%= @currently_playing['item']['external_urls']['spotify'] %>" target="_blank">
-                            <img src="<%= @currently_playing['item']['album']['images'][0]['url'] %>", style="height:150px; width:140px;">
+                            <img src="<%= @currently_playing['item']['album']['images'][0]['url'] %>", style="height:160px; width:140px;">
                         </a>
                     </div>
                     <div class="col-md-7">
-                        <h5>
+                        <h5><br>
                             Song:⠀<%= @currently_playing['item']['name'] %>
                             <br><br>
                             Album:⠀<%= @currently_playing['item']['album']['name'] %>
@@ -116,7 +116,7 @@
                                     <%else%>
                                         <%= i+1 %>.⠀
                                     <%end%>
-                                    <a href="<%= @top_tracks['items'][i]['external_urls']['spotify'] %>" target="_blank"><img src="<%= @top_tracks['items'][i]['album']['images'][0]['url'] %>", style="height:75px; width:70px;"></a>⠀
+                                    <a href="<%= @top_tracks['items'][i]['external_urls']['spotify'] %>" target="_blank"><img src="<%= @top_tracks['items'][i]['album']['images'][0]['url'] %>", style="height:80px; width:70px;"></a>⠀
                                     <%= @top_tracks['items'][i]['name']%> - <%= @top_tracks['items'][i]['artists'][0]['name']%>
                                 </h5>
                                 <hr style="color:#1DB954;">
@@ -140,7 +140,7 @@
                                         <%else%>
                                             <%= i+1 %>.⠀
                                         <%end%>
-                                        <a href="<%= @top_artists['items'][i]['external_urls']['spotify'] %>" target="_blank"><img src="<%= @top_artists['items'][i]['images'][0]['url'] %>", style="height:130px; width:120px; object-fit:cover; border-radius: 50%;"></a>⠀
+                                        <a href="<%= @top_artists['items'][i]['external_urls']['spotify'] %>" target="_blank"><img src="<%= @top_artists['items'][i]['images'][0]['url'] %>", style="height:140px; width:120px; object-fit:cover; border-radius: 50%;"></a>⠀
                                         <%= @top_artists['items'][i]['name']%>
                                         <br><br>
                                     </h5>
@@ -169,7 +169,7 @@
                         <div class="element">
                             <%if i>49%><%break%><%end%>
                             <a href="<%= @following_artists['artists']['items'][i]['external_urls']['spotify'] %>" target="_blank">
-                            <img src="<%= @following_artists['artists']['items'][i]['images'][0]['url'] %>", style="height:130px; width:120px; object-fit:cover; border-radius: 50%;"></a>⠀
+                            <img src="<%= @following_artists['artists']['items'][i]['images'][0]['url'] %>", style="height:140px; width:120px; object-fit:cover; border-radius: 50%;"></a>⠀
                             <h6 class="d-flex justify-content-start"><%= @following_artists['artists']['items'][i]['name']%><h5>
                         </div>
                     </div>
@@ -201,10 +201,10 @@
                             
                             <% spotify_album_url = "https://open.spotify.com/album/#{@album_library['items'][i]['album']['id']}"%>
                             <a href="<%= spotify_album_url %>" target="_blank">
-                                <img src="<%= @album_library['items'][i]['album']['images'][1]['url']%>", style="height:120px; width:110px;" >
+                                <img src="<%= @album_library['items'][i]['album']['images'][1]['url']%>", style="height:140px; width:120px;" >
                             </a>
                             <p class="d-flex justify-content-start">        
-                                <%= @album_library['items'][i]['album']['name'].truncate(20) %><br>
+                                <h6><%= @album_library['items'][i]['album']['name'].truncate(20) %></h6>
                                 <%= @album_library['items'][i]['album']['artists'][0]['name'] %>
                             </p>
                         </div>

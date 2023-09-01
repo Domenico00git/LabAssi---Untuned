@@ -25,8 +25,8 @@
       <div class="col md-4 d-flex justify-content-center">
         <%= form_with url: topics_index_path, method: :get do |form|%>
           <%= form.search_field :query, value: params[:query],
-          placeholder: " Search by topic" %>
-          <%= form.submit "Search", class:"btn btn-sm btn-outline-success" %>
+          placeholder: " Search by topic"%>
+          <%= form.submit "Search", class:"btn btn-outline-light" %>
         <% end %>
       </div>
       <div class="col md-4 d-flex justify-content-end">
@@ -44,7 +44,7 @@
             <%= link_to "Show this post", post %>
           </div>
 
-          <div class="col-md-6 d-flex justify-content-center">
+          <div class="col-md-6 d-flex justify-content-center", style="color:white;">
             <i class="bi bi-chat-dots-fill"></i>⠀<%=post.comments.count%>⠀⠀
             <i class="bi bi-hand-thumbs-up-fill"></i>⠀<%= post.votes_for.up.size%> ⠀⠀
             <i class="bi bi-hand-thumbs-down-fill"></i>⠀<%= post.votes_for.down.size%>

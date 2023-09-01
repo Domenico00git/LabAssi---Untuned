@@ -29,7 +29,7 @@
     <strong>last update:</strong>
     <%= time_ago_in_words(comment.updated_at) %>
   </div>
-  <div class="col-md-2 d-flex justify-content-center">
+  <div class="col-md-2 d-flex justify-content-center", style="color:white;">
     <i class="bi bi-hand-thumbs-up-fill"></i>⠀<%= comment.votes_for.up.size%>⠀⠀
     <i class="bi bi-hand-thumbs-down-fill"></i>⠀<%= comment.votes_for.down.size%>
   </div>

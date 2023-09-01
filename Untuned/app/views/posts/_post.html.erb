@@ -10,8 +10,8 @@
       <% end %>
     <% end %>
     <strong><%= link_to post.user.username, user_path(post.user.username)%></strong>⠀
-    <strong style="color:#1DB954;"><%= post.label %></strong>
-    <% if user_signed_in? && current_user.following?(post) %>⠀<i class="bi bi-bell-fill"></i> <% end %>
+    <strong style="color:white;"><%= post.label %></strong>
+    <% if user_signed_in? && current_user.following?(post) %>⠀<i class="bi bi-bell-fill", style="color:#1DB954;"></i> <% end %>
   </p>
 
   <p>

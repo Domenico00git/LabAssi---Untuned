@@ -16,12 +16,12 @@
         <div class="d-flex justify-content-center">
 
           <% if @user.provider == 'spotify' && @user.avatar_url.present? %>
-            <%= image_tag(@user.avatar_url, style: "display: inline-block; height: 180px; width: 170px; object-fit: cover; border-radius: 50%;") %>
+            <%= image_tag(@user.avatar_url, style: "display: inline-block; height: 180px; width: 160px; object-fit: cover; border-radius: 50%;") %>
           <% else %>
             <% if @user.image.attached? %>
-              <%= image_tag(@user.image, style: "display: inline-block; height: 180px; width: 170px; object-fit:cover; border-radius: 50%;")%>
+              <%= image_tag(@user.image, style: "display: inline-block; height: 180px; width: 160px; object-fit:cover; border-radius: 50%;")%>
             <% else %>
-              <img src="/assets/default_picture.jpg" display="inline-block" height="180px" width="170px" object-fit="cover" border-radius="50%">
+              <img src="/assets/default_picture.jpg" display="inline-block" height="180px" width="160px" object-fit="cover" border-radius="50%">
             <% end %>
           <% end %>
         </div>
@@ -78,7 +78,6 @@
               <h6 style="color:lightgrey">
                 <br>
                 You avatar and your personal data cannot be modified because they are obtained from your Spotify account. <br>
-                Please make the changes on Spotify if you wish.
               </h6>
             </div>
           <% end %>
