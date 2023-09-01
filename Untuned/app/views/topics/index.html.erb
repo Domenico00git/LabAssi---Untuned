@@ -34,8 +34,23 @@
                     <i class="bi bi-hand-thumbs-up-fill"></i>⠀<%= post.votes_for.up.size%> ⠀⠀
                     <i class="bi bi-hand-thumbs-down-fill"></i>⠀<%= post.votes_for.down.size%>
                 </div>
-            </div>
 
+                <div class="col-md-3 d-flex justify-content-end">
+                    <% if user_signed_in? %>
+                        <% if current_user.voted_up_on? post%>
+                            <%= link_to "unlike", unlike_post_path(post), method: :delete, class:"btn btn-primary"%>
+                        <% else %>
+                            <%= link_to "like", like_post_path(post), method: :post, class:"btn btn-outline-primary"%>
+                        <% end %>
+    
+                        <% if current_user.voted_down_on? post%>
+                            <%= link_to "undislike", undislike_post_path(post), method: :delete, class:"btn btn-primary"%>
+                        <% else %>
+                            <%= link_to "dislike", dislike_post_path(post), method: :post, class:"btn btn-outline-primary"%>
+                        <% end %>
+                    <% end %>
+                </div>    
+            </div>
         <% end %>
 
         <div class="text-center">
