@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
     before_action :set_notifications, if: :current_user
 
-    def access_denied(exception)
-        redirect_to root_path, alert: exception_message
+    def access_denied
+        redirect_to root_path
     end
 
     protected
